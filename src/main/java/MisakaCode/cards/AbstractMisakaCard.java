@@ -40,13 +40,9 @@ public abstract class AbstractMisakaCard extends CustomCard {
         return new DamageInfo(AbstractDungeon.player, i, this.damageTypeForTurn);
     }
 
-    DamageAction na(AbstractMonster m, DamageInfo i) {
-        return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
-    }
+    DamageAction na(AbstractMonster m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
 
-    DamageAction na(AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) {
-        return new DamageAction(m, i, e);
-    }
+    DamageAction na(AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) { return new DamageAction(m, i, e); }
 
     GainBlockAction nz(int i) {
         return new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, i, true);
