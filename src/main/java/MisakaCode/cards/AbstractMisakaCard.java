@@ -4,11 +4,13 @@ import MisakaCode.patches.MisakaCardTags;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public abstract class AbstractMisakaCard extends CustomCard {
     public int misakaMagicNumber;
@@ -36,17 +38,21 @@ public abstract class AbstractMisakaCard extends CustomCard {
         AbstractDungeon.actionManager.addToBottom(act);
     }
 
-    DamageInfo nd(int i) {
+    DamageInfo nd (int i) {
         return new DamageInfo(AbstractDungeon.player, i, this.damageTypeForTurn);
     }
 
-    DamageAction na(AbstractMonster m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
+    DamageAction na (AbstractMonster m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
 
-    DamageAction na(AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) { return new DamageAction(m, i, e); }
+    DamageAction na (AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) { return new DamageAction(m, i, e); }
 
-    GainBlockAction nz(int i) {
+    GainBlockAction nz (int i) {
         return new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, i, true);
     }
+
+    ApplyPowerAction ns (AbstractMonster m, AbstractPower po) { return new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount); }
+
+    ApplyPowerAction ns (AbstractPower po) { return new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, po, po.amount); }
 
     void ub(int i) {
         this.upgradeBlock(i);
