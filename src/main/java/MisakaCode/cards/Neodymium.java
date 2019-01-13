@@ -1,5 +1,6 @@
 package MisakaCode.cards;
 
+import MisakaCode.monsters.NeodymiumMagnet;
 import MisakaCode.patches.AbstractCardEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -34,7 +35,7 @@ public class Neodymium extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        //TODO SUMMON MAGNET BOI
+        act(nq(NeodymiumMagnet.ID, m));
     }
 
     @Override

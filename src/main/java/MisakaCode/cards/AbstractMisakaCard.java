@@ -1,5 +1,8 @@
 package MisakaCode.cards;
 
+import MisakaCode.actions.AbstractMisakaAction;
+import MisakaCode.actions.MisakaSpawnMonsterAction;
+import MisakaCode.monsters.AbstractMisakaMonster;
 import MisakaCode.patches.MisakaCardTags;
 import MisakaCode.powers.NegativelyChargedPower;
 import MisakaCode.powers.PositivelyChargedPower;
@@ -57,6 +60,8 @@ public abstract class AbstractMisakaCard extends CustomCard {
     ApplyPowerAction ns (AbstractMonster m, AbstractPower po) { return new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount); }
 
     ApplyPowerAction ns (AbstractPower po) { return new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, po, po.amount); }
+
+    MisakaSpawnMonsterAction nq (String m, AbstractMonster target) { return new MisakaSpawnMonsterAction(m, target); }
 
     WeakPower wa (AbstractMonster m, int i) { return new WeakPower(m, i, false); }
 

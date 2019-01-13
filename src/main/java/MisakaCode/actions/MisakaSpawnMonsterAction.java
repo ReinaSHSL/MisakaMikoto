@@ -10,11 +10,11 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
-    private AbstractMisakaMonster m;
+    private String m;
     private AbstractMonster target;
     private float shoveAmount = 50.0F * Settings.scale;
 
-    public MisakaSpawnMonsterAction(AbstractMisakaMonster m, AbstractMonster target) {
+    public MisakaSpawnMonsterAction(String m, AbstractMonster target) {
         this.m = m;
         this.target = target;
         this.duration = Settings.ACTION_DUR_FASTER;
@@ -29,8 +29,8 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
                 AbstractMonster moveMonsterLeft = aq().get(index - 1);
                 moveMonsterLeft.drawX -= shoveAmount;
             }
-            m.drawX += shoveAmount;
-            switch (m.id) {
+            target.drawX += shoveAmount;
+            switch (m) {
                 case NeodymiumMagnet.ID:
                     act(new SpawnMonsterAction(new NeodymiumMagnet(offsetX), false, index));
                     tickDuration();
