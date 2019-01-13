@@ -1,7 +1,9 @@
 package MisakaCode.cards;
 
 import MisakaCode.patches.AbstractCardEnum;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
@@ -34,8 +36,8 @@ public class Strike_Magnetic extends AbstractMisakaCard {
     }
 
     @Override
-    public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        act(new DamageAction(m, new DamageInfo(p, DAMAGE, this.damageTypeForTurn)));
     }
 
     @Override
