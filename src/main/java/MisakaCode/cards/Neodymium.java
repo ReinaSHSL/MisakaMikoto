@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Neodymium extends AbstractMisakaCard {
     public static final String ID = "misaka:Neodymium";
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
     private static final String IMG = "MisakaResources/images/cards/Neodymium";
     private static final int COST = 1;

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Defend_Magnetic extends AbstractMisakaCard {
     public static final String ID = "misaka:Defend_Magnetic";
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
     private static final String IMG = "MisakaResources/images/cards/Defend_Magnetic";
     private static final int COST = 1;

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class Thunderjolt extends AbstractMisakaCard {
     public static final String ID = "misaka:Thunderjolt";
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
+    public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
     private static final String IMG = "MisakaResources/images/cards/Thunderjolt";
     private static final int COST = 0;
