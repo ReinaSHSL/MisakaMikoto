@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 public abstract class AbstractMisakaCard extends CustomCard {
     public int misakaMagicNumber;
@@ -53,6 +55,10 @@ public abstract class AbstractMisakaCard extends CustomCard {
     ApplyPowerAction ns (AbstractMonster m, AbstractPower po) { return new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount); }
 
     ApplyPowerAction ns (AbstractPower po) { return new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, po, po.amount); }
+
+    WeakPower wa (AbstractMonster m, int i) { return new WeakPower(m, i, false); }
+
+    VulnerablePower wv (AbstractMonster m, int i) { return new VulnerablePower(m, i, false); }
 
     void ub(int i) {
         this.upgradeBlock(i);
