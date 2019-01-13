@@ -1,6 +1,7 @@
 package MisakaCode.cards;
 
 import MisakaCode.patches.AbstractCardEnum;
+import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -23,6 +24,8 @@ public class Strike_Magnetic extends AbstractMisakaCard {
 
     public Strike_Magnetic() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
+        this.tags.add(BaseModCardTags.BASIC_STRIKE);
+        this.tags.add(CardTags.STRIKE);
     }
 
     @Override
