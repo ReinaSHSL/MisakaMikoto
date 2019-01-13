@@ -38,7 +38,7 @@ public class Thunderjolt extends AbstractMisakaCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         act(na(m, nd(d)));
-        act(ns(wq(m)));
+        act(ns(we(m)));
     }
 
     @Override
