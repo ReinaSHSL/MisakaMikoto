@@ -19,6 +19,8 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.powers.WeakPower;
 
+import java.util.ArrayList;
+
 public abstract class AbstractMisakaCard extends CustomCard {
     public int misakaMagicNumber;
     public int baseMisakaMagicNumber;
@@ -44,6 +46,8 @@ public abstract class AbstractMisakaCard extends CustomCard {
     void act (AbstractGameAction a) { AbstractDungeon.actionManager.addToBottom(a); }
 
     void actt (AbstractGameAction a) { AbstractDungeon.actionManager.addToTop(a); }
+
+    ArrayList<AbstractMonster> aq() { return AbstractDungeon.getCurrRoom().monsters.monsters; }
 
     DamageInfo nd (int i) {
         return new DamageInfo(AbstractDungeon.player, i, this.damageTypeForTurn);
