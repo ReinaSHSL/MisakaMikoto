@@ -18,6 +18,7 @@ public class Neodymium extends AbstractMisakaCard {
     private static final CardColor COLOR = AbstractCardEnum.MISAKA_MAGNETIC;
     private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final int cc = 0;
 
     public Neodymium() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
@@ -27,12 +28,13 @@ public class Neodymium extends AbstractMisakaCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
+            uc(cc);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
+        //TODO SUMMON MAGNET BOI
     }
 
     @Override
