@@ -31,13 +31,14 @@ public class Thunderjolt extends AbstractMisakaCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            ud(4);
+            ud(du);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         act(na(m, nd(d)));
+        act(ns(wq(m)));
     }
 
     @Override
