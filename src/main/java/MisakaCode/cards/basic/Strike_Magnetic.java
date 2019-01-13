@@ -30,7 +30,7 @@ public class Strike_Magnetic extends AbstractMisakaCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeDamage(du);
+            ud(du);
         }
     }
 

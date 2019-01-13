@@ -41,4 +41,20 @@ public abstract class AbstractMisakaCard extends CustomCard {
     protected GainBlockAction nz(int i) {
         return new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, i, true);
     }
+
+    protected void ub(int i) {
+        this.upgradeBlock(i);
+    }
+
+    protected void ud(int i) {
+        this.upgradeDamage(i);
+    }
+
+    protected void um(int i) {
+        this.upgradeMagicNumber(i);
+    }
+
+    protected void umn(int i) {
+        this.upgradeMisakaMagicNumber(i);
+    }
 }
