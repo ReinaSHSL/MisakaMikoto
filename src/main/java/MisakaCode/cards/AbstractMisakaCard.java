@@ -22,39 +22,39 @@ public abstract class AbstractMisakaCard extends CustomCard {
         this.misakaMagicNumberChanged = true;
     }
 
-    protected void act(AbstractGameAction act) {
+    void act(AbstractGameAction act) {
         AbstractDungeon.actionManager.addToBottom(act);
     }
 
-    protected DamageInfo nd(int i) {
+    DamageInfo nd(int i) {
         return new DamageInfo(AbstractDungeon.player, i, this.damageTypeForTurn);
     }
 
-    protected DamageAction na(AbstractMonster m, DamageInfo i) {
+    DamageAction na(AbstractMonster m, DamageInfo i) {
         return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
     }
 
-    protected DamageAction na(AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) {
+    DamageAction na(AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) {
         return new DamageAction(m, i, e);
     }
 
-    protected GainBlockAction nz(int i) {
+    GainBlockAction nz(int i) {
         return new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, i, true);
     }
 
-    protected void ub(int i) {
+    void ub(int i) {
         this.upgradeBlock(i);
     }
 
-    protected void ud(int i) {
+    void ud(int i) {
         this.upgradeDamage(i);
     }
 
-    protected void um(int i) {
+    void um(int i) {
         this.upgradeMagicNumber(i);
     }
 
-    protected void umn(int i) {
+    void umn(int i) {
         this.upgradeMisakaMagicNumber(i);
     }
 }

@@ -1,20 +1,37 @@
 package MisakaCode;
 
 import MisakaCode.cards.MisakaDynamicVariable;
-import MisakaCode.cards.basic.Strike_Magnetic;
 import MisakaCode.character.MisakaMikoto;
 import MisakaCode.patches.AbstractCardEnum;
 import MisakaCode.patches.MisakaMikotoEnum;
+import MisakaCode.tools.CardFilter;
+import MisakaCode.tools.CardIgnore;
+import MisakaCode.tools.CardNoSeen;
 import basemod.BaseMod;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import javassist.CannotCompileException;
+import javassist.NotFoundException;
+import org.clapper.util.classutil.ClassFinder;
+import javassist.CtClass;
+import org.clapper.util.classutil.*;
+
+import java.io.File;
+import java.lang.reflect.Modifier;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @SpireInitializer
 public class MisakaModInitializer implements
@@ -64,6 +81,58 @@ public class MisakaModInitializer implements
     @Override
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new MisakaDynamicVariable());
-        BaseMod.addCard(new Strike_Magnetic());
+        try {
+            autoAddCards();
+        } catch (URISyntaxException | IllegalAccessException | InstantiationException | NotFoundException | CannotCompileException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void autoAddCards() throws URISyntaxException, IllegalAccessException, InstantiationException, NotFoundException, CannotCompileException
+    {
+        ClassFinder finder = new ClassFinder();
+        URL url = MisakaModInitializer.class.getProtectionDomain().getCodeSource().getLocation();
+        finder.add(new File(url.toURI()));
+
+        ClassFilter filter =
+                new AndClassFilter(
+                        new NotClassFilter(new InterfaceOnlyClassFilter()),
+                        new NotClassFilter(new AbstractClassFilter()),
+                        new ClassModifiersClassFilter(Modifier.PUBLIC),
+                        new CardFilter()
+                );
+        Collection<ClassInfo> foundClasses = new ArrayList<>();
+        finder.findClasses(foundClasses, filter);
+
+        for (ClassInfo classInfo : foundClasses) {
+            CtClass cls = Loader.getClassPool().get(classInfo.getClassName());
+            if (cls.hasAnnotation(CardIgnore.class)) {
+                continue;
+            }
+            boolean isCard = false;
+            CtClass superCls = cls;
+            while (superCls != null) {
+                superCls = superCls.getSuperclass();
+                if (superCls == null) {
+                    break;
+                }
+                if (superCls.getName().equals(AbstractCard.class.getName())) {
+                    isCard = true;
+                    break;
+                }
+            }
+            if (!isCard) {
+                continue;
+            }
+
+            System.out.println(classInfo.getClassName());
+            AbstractCard card = (AbstractCard) Loader.getClassPool().toClass(cls).newInstance();
+            BaseMod.addCard(card);
+            if (cls.hasAnnotation(CardNoSeen.class)) {
+                UnlockTracker.hardUnlockOverride(card.cardID);
+            } else {
+                UnlockTracker.unlockCard(card.cardID);
+            }
+        }
     }
 }

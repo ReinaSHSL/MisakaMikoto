@@ -1,6 +1,5 @@
-package MisakaCode.cards.basic;
+package MisakaCode.cards;
 
-import MisakaCode.cards.AbstractMisakaCard;
 import MisakaCode.patches.AbstractCardEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
