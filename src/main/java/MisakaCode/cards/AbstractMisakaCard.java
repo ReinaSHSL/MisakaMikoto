@@ -21,15 +21,15 @@ public abstract class AbstractMisakaCard extends CustomCard {
         this.misakaMagicNumberChanged = true;
     }
 
-    void act(AbstractGameAction act) {
+    protected void act(AbstractGameAction act) {
         AbstractDungeon.actionManager.addToBottom(act);
     }
 
-    DamageInfo nd(int i) {
+    protected DamageInfo nd(int i) {
         return new DamageInfo(AbstractDungeon.player, i, this.damageTypeForTurn);
     }
 
-    DamageAction na(AbstractMonster m, DamageInfo i) {
+    protected DamageAction na(AbstractMonster m, DamageInfo i) {
         return new DamageAction(m, i);
     }
 }
