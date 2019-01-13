@@ -30,6 +30,10 @@ public abstract class AbstractMisakaCard extends CustomCard {
     }
 
     protected DamageAction na(AbstractMonster m, DamageInfo i) {
-        return new DamageAction(m, i);
+        return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL);
+    }
+
+    protected DamageAction na(AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) {
+        return new DamageAction(m, i, e);
     }
 }
