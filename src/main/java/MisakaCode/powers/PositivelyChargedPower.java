@@ -1,5 +1,6 @@
 package MisakaCode.powers;
 
+import MisakaCode.tools.TextureLoader;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
