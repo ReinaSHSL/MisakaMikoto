@@ -35,7 +35,7 @@ public class Strike_Magnetic extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        
+
     }
 
     @Override

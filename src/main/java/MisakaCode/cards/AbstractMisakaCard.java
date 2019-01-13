@@ -1,6 +1,8 @@
 package MisakaCode.cards;
 
 import basemod.abstracts.CustomCard;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
 public abstract class AbstractMisakaCard extends CustomCard {
     public int misakaMagicNumber;
@@ -14,5 +16,9 @@ public abstract class AbstractMisakaCard extends CustomCard {
     public void upgradeMisakaMagicNumber(int i) {
         this.baseMisakaMagicNumber += i;
         this.misakaMagicNumberChanged = true;
+    }
+
+    public void act(AbstractGameAction act) {
+        AbstractDungeon.actionManager.addToBottom(act);
     }
 }
