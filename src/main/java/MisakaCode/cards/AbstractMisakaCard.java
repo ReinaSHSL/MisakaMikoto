@@ -38,9 +38,9 @@ public abstract class AbstractMisakaCard extends CustomCard {
         return this.hasTag(MisakaCardTags.isNegative);
     }
 
-    void act(AbstractGameAction act) {
-        AbstractDungeon.actionManager.addToBottom(act);
-    }
+    void act (AbstractGameAction a) { AbstractDungeon.actionManager.addToBottom(a); }
+
+    void actt (AbstractGameAction a) { AbstractDungeon.actionManager.addToTop(a); }
 
     DamageInfo nd (int i) {
         return new DamageInfo(AbstractDungeon.player, i, this.damageTypeForTurn);
