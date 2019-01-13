@@ -1,6 +1,8 @@
 package MisakaCode.cards;
 
 import MisakaCode.patches.MisakaCardTags;
+import MisakaCode.powers.NegativelyChargedPower;
+import MisakaCode.powers.PositivelyChargedPower;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -59,6 +61,10 @@ public abstract class AbstractMisakaCard extends CustomCard {
     WeakPower wa (AbstractMonster m, int i) { return new WeakPower(m, i, false); }
 
     VulnerablePower wv (AbstractMonster m, int i) { return new VulnerablePower(m, i, false); }
+
+    PositivelyChargedPower wq (AbstractMonster m) { return new PositivelyChargedPower(m); }
+
+    NegativelyChargedPower we (AbstractMonster m) { return new NegativelyChargedPower(m); }
 
     void ub(int i) {
         this.upgradeBlock(i);
