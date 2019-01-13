@@ -1,9 +1,12 @@
 package MisakaCode;
 
+import MisakaCode.cards.MisakaDynamicVariable;
+import MisakaCode.cards.basic.Strike_Magnetic;
 import MisakaCode.character.MisakaMikoto;
 import MisakaCode.patches.AbstractCardEnum;
 import MisakaCode.patches.MisakaMikotoEnum;
 import basemod.BaseMod;
+import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import com.badlogic.gdx.graphics.Color;
@@ -16,7 +19,8 @@ import com.megacrit.cardcrawl.localization.*;
 @SpireInitializer
 public class MisakaModInitializer implements
         EditStringsSubscriber,
-        EditCharactersSubscriber {
+        EditCharactersSubscriber,
+        EditCardsSubscriber {
     public static final Color MAGNETIC = CardHelper.getColor(255.0f, 255.0f, 255.0f);
     private static final String ATTACK_MAGNETIC = "MisakaResources/images/512/attack_silver.png";
     private static final String SKILL_MAGNETIC = "MisakaResources/images/512/skill_silver.png";
@@ -56,4 +60,10 @@ public class MisakaModInitializer implements
                     "MisakaResources/images/character/button.png", "MisakaResources/images/character/portrait.png",
                     MisakaMikotoEnum.THE_RAILGUN);
         }
+
+    @Override
+    public void receiveEditCards() {
+        BaseMod.addDynamicVariable(new MisakaDynamicVariable());
+        BaseMod.addCard(new Strike_Magnetic());
     }
+}
