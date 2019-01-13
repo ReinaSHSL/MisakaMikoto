@@ -44,8 +44,8 @@ public abstract class AbstractMisakaMonster extends AbstractMonster {
 
     ArrayList<AbstractMonster> xx() {
         ArrayList<AbstractMonster> retVal = new ArrayList<>();
-        retVal.add(xz());
-        retVal.add(xc());
+        if (xz() != null) retVal.add(xz());
+        if (xc() != null) retVal.add(xc());
         return retVal;
     }
 }
