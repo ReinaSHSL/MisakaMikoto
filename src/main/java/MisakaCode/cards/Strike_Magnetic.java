@@ -20,8 +20,8 @@ public class Strike_Magnetic extends AbstractMisakaCard {
     private static final AbstractCard.CardColor COLOR = AbstractCardEnum.MISAKA_MAGNETIC;
     private static final AbstractCard.CardRarity RARITY = CardRarity.BASIC;
     private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
-    private static final int DAMAGE = 6;
-    private static final int DAMAGE_UPGRADE = 3;
+    private static final int d = 6;
+    private static final int du = 3;
 
     public Strike_Magnetic() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
@@ -31,13 +31,13 @@ public class Strike_Magnetic extends AbstractMisakaCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeDamage(DAMAGE_UPGRADE);
+            this.upgradeDamage(du);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(new DamageAction(m, new DamageInfo(p, DAMAGE, this.damageTypeForTurn)));
+        act(na(m, nd(d)));
     }
 
     @Override

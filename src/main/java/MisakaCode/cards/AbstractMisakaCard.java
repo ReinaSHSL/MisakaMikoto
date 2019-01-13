@@ -2,8 +2,10 @@ package MisakaCode.cards;
 
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public abstract class AbstractMisakaCard extends CustomCard {
     public int misakaMagicNumber;
@@ -25,5 +27,9 @@ public abstract class AbstractMisakaCard extends CustomCard {
 
     DamageInfo nd(int i) {
         return new DamageInfo(AbstractDungeon.player, i, this.damageTypeForTurn);
+    }
+
+    DamageAction na(AbstractMonster m, DamageInfo i) {
+        return new DamageAction(m, i);
     }
 }
