@@ -3,6 +3,7 @@ package MisakaCode.cards;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -35,5 +36,9 @@ public abstract class AbstractMisakaCard extends CustomCard {
 
     protected DamageAction na(AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) {
         return new DamageAction(m, i, e);
+    }
+
+    protected GainBlockAction nz(int i) {
+        return new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, i, true);
     }
 }

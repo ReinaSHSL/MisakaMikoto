@@ -2,27 +2,28 @@ package MisakaCode.cards.basic;
 
 import MisakaCode.cards.AbstractMisakaCard;
 import MisakaCode.patches.AbstractCardEnum;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class Strike_Magnetic extends AbstractMisakaCard {
-    public static final String ID = "misaka:Strike_Magnetic";
+public class Defend_Magnetic extends AbstractMisakaCard {
+    public static final String ID = "misaka:Defend_Magnetic";
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
-    private static final String IMG = "MisakaResources/images/cards/Strike";
+    private static final String IMG = "MisakaResources/images/cards/Defend_Magnetic";
     private static final int COST = 1;
     private static final String DESC = cardStrings.DESCRIPTION;
-    private static final AbstractCard.CardType TYPE = CardType.ATTACK;
-    private static final AbstractCard.CardColor COLOR = AbstractCardEnum.MISAKA_MAGNETIC;
-    private static final AbstractCard.CardRarity RARITY = CardRarity.BASIC;
-    private static final AbstractCard.CardTarget TARGET = CardTarget.ENEMY;
-    private static final int d = 6;
-    private static final int du = 3;
+    private static final CardType TYPE = CardType.SKILL;
+    private static final CardColor COLOR = AbstractCardEnum.MISAKA_MAGNETIC;
+    private static final CardRarity RARITY = CardRarity.BASIC;
+    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final int b = 5;
+    private static final int bu = 3;
 
-    public Strike_Magnetic() {
+    public Defend_Magnetic() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
     }
 
@@ -30,17 +31,17 @@ public class Strike_Magnetic extends AbstractMisakaCard {
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            this.upgradeDamage(du);
+            this.upgradeBlock(3);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(na(m, nd(d)));
+        act(nz(b));
     }
 
     @Override
     public AbstractCard makeCopy() {
-        return new Strike_Magnetic();
+        return new Defend_Magnetic();
     }
 }
