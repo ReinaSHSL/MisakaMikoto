@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.localization.*;
 @SpireInitializer
 public class MisakaModInitializer implements
         EditStringsSubscriber {
-    private static final Color MAGNETIC = CardHelper.getColor(255.0f, 255.0f, 255.0f);
+    public static final Color MAGNETIC = CardHelper.getColor(255.0f, 255.0f, 255.0f);
     private static final String ATTACK_MAGNETIC = "MisakaResources/images/512/attack_silver.png";
     private static final String SKILL_MAGNETIC = "MisakaResources/images/512/skill_silver.png";
     private static final String POWER_MAGNETIC = "MisakaResources/images/512/power_silver.png";
