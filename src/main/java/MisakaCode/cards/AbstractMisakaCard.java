@@ -1,5 +1,7 @@
 package MisakaCode.cards;
 
+import MisakaCode.patches.MisakaCardTags;
+import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -20,6 +22,14 @@ public abstract class AbstractMisakaCard extends CustomCard {
     public void upgradeMisakaMagicNumber(int i) {
         this.baseMisakaMagicNumber += i;
         this.misakaMagicNumberChanged = true;
+    }
+
+    public boolean isPositive() {
+        return this.hasTag(MisakaCardTags.isPositive);
+    }
+
+    public boolean isNegative() {
+        return this.hasTag(MisakaCardTags.isNegative);
     }
 
     void act(AbstractGameAction act) {
