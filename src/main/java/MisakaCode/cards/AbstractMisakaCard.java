@@ -66,19 +66,21 @@ public abstract class AbstractMisakaCard extends CustomCard {
 
     NegativelyChargedPower we (AbstractMonster m) { return new NegativelyChargedPower(m); }
 
-    void ub(int i) {
+    void ub (int i) {
         this.upgradeBlock(i);
     }
 
-    void ud(int i) {
+    void ud (int i) {
         this.upgradeDamage(i);
     }
 
-    void um(int i) {
+    void um (int i) {
         this.upgradeMagicNumber(i);
     }
 
-    void umn(int i) {
+    void umn (int i) {
         this.upgradeMisakaMagicNumber(i);
     }
+
+    void uc (int i) { this.upgradeBaseCost(i); }
 }
