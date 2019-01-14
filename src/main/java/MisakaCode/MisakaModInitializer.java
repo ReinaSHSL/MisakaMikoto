@@ -5,12 +5,16 @@ import MisakaCode.character.MisakaMikoto;
 import MisakaCode.patches.AbstractCardEnum;
 import MisakaCode.patches.MisakaCardTags;
 import MisakaCode.patches.MisakaMikotoEnum;
+import MisakaCode.relics.AbstractMisakaRelic;
 import MisakaCode.tools.CardFilter;
 import MisakaCode.tools.CardIgnore;
 import MisakaCode.tools.CardNoSeen;
+import MisakaCode.tools.RelicFilter;
 import basemod.BaseMod;
+import basemod.helpers.RelicType;
 import basemod.interfaces.EditCardsSubscriber;
 import basemod.interfaces.EditCharactersSubscriber;
+import basemod.interfaces.EditRelicsSubscriber;
 import basemod.interfaces.EditStringsSubscriber;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.Loader;
@@ -38,7 +42,8 @@ import java.util.Collection;
 public class MisakaModInitializer implements
         EditStringsSubscriber,
         EditCharactersSubscriber,
-        EditCardsSubscriber {
+        EditCardsSubscriber,
+        EditRelicsSubscriber {
     public static final Color MAGNETIC = CardHelper.getColor(255.0f, 255.0f, 255.0f);
     private static final String ATTACK_MAGNETIC = "MisakaResources/images/512/attack_silver.png";
     private static final String SKILL_MAGNETIC = "MisakaResources/images/512/skill_silver.png";
@@ -143,6 +148,66 @@ public class MisakaModInitializer implements
 
     public static boolean isNegative(AbstractCard c) {
         return c.hasTag(MisakaCardTags.isNegative);
+    }
+
+    @Override
+    public void receiveEditRelics() {
+        try {
+            autoAddRelics();
+        } catch (URISyntaxException | IllegalAccessException | InstantiationException | CannotCompileException | NotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void autoAddRelics()
+            throws URISyntaxException, IllegalAccessException, InstantiationException, NotFoundException, CannotCompileException
+    {
+        ClassFinder finder = new ClassFinder();
+        URL url = MisakaModInitializer.class.getProtectionDomain().getCodeSource().getLocation();
+        finder.add(new File(url.toURI()));
+
+        ClassFilter filter =
+                new AndClassFilter(
+                        new NotClassFilter(new InterfaceOnlyClassFilter()),
+                        new NotClassFilter(new AbstractClassFilter()),
+                        new ClassModifiersClassFilter(Modifier.PUBLIC),
+                        new RelicFilter() // Different
+                );
+        Collection<ClassInfo> foundClasses = new ArrayList<>();
+        finder.findClasses(foundClasses, filter);
+
+        for (ClassInfo classInfo : foundClasses) {
+            CtClass cls = Loader.getClassPool().get(classInfo.getClassName());
+            if (cls.hasAnnotation(CardIgnore.class)) {
+                continue;
+            }
+            boolean isRelic = false;
+            CtClass superCls = cls;
+            while (superCls != null) {
+                superCls = superCls.getSuperclass();
+                if (superCls == null) {
+                    break;
+                }
+                if (superCls.getName().equals(AbstractMisakaRelic.class.getName())) {
+                    isRelic = true;
+                    break;
+                }
+            }
+            if (!isRelic) {
+                continue;
+            }
+            System.out.println(classInfo.getClassName());
+            // Different
+            AbstractMisakaRelic relic = (AbstractMisakaRelic) Loader.getClassPool().toClass(cls).newInstance();
+            if (relic.color == null) {
+                BaseMod.addRelic(relic, RelicType.SHARED);
+            } else {
+                BaseMod.addRelicToCustomPool(relic, relic.color);
+            }
+            if (!cls.hasAnnotation(CardNoSeen.class)) {
+                UnlockTracker.markRelicAsSeen(relic.relicId);
+            }
+        }
     }
 
 }
