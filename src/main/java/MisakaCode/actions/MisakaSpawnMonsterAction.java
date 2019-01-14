@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.monsters.exordium.ApologySlime;
 
 public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
     private String m;
@@ -38,6 +39,8 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
                     AbstractDungeon.getCurrRoom().monsters.addMonster(index, neodymiumMagnet);
                     act(new ApplyPowerAction(neodymiumMagnet, neodymiumMagnet, new PositivelyChargedPower(neodymiumMagnet)));
                     tickDuration();
+                default:
+                    act(new SpawnMonsterAction(new ApologySlime(), false));
             }
         }
     }
