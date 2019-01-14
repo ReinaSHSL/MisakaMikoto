@@ -3,6 +3,7 @@ package MisakaCode;
 import MisakaCode.cards.MisakaDynamicVariable;
 import MisakaCode.character.MisakaMikoto;
 import MisakaCode.patches.AbstractCardEnum;
+import MisakaCode.patches.MisakaCardTags;
 import MisakaCode.patches.MisakaMikotoEnum;
 import MisakaCode.tools.CardFilter;
 import MisakaCode.tools.CardIgnore;
@@ -135,4 +136,13 @@ public class MisakaModInitializer implements
             }
         }
     }
+
+    public static boolean isPositive(AbstractCard c) {
+        return c.hasTag(MisakaCardTags.isPositive);
+    }
+
+    public static boolean isNegative(AbstractCard c) {
+        return c.hasTag(MisakaCardTags.isNegative);
+    }
+
 }
