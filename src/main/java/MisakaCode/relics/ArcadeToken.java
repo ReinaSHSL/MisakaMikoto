@@ -4,11 +4,11 @@ import MisakaCode.tools.TextureLoader;
 import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
-public class ArcadeCoin extends AbstractMisakaRelic {
-    public static final String ID = "misaka:ArcadeCoin";
-    private static final Texture IMG = TextureLoader.getTexture("MisakaResources/resources/relics/ArcadeCoin.png");
+public class ArcadeToken extends AbstractMisakaRelic {
+    public static final String ID = "misaka:ArcadeToken";
+    private static final Texture IMG = TextureLoader.getTexture("MisakaResources/resources/relics/ArcadeToken.png");
 
-    public ArcadeCoin() {
+    public ArcadeToken() {
         super(ID, IMG, RelicTier.STARTER, LandingSound.CLINK);
     }
 
@@ -19,6 +19,7 @@ public class ArcadeCoin extends AbstractMisakaRelic {
 
     @Override
     public AbstractRelic makeCopy() {
-        return new ArcadeCoin();
+        return new ArcadeToken();
     }
+
 }

@@ -39,9 +39,4 @@ public class Defend_Magnetic extends AbstractMisakaCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         act(nz(b));
     }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Defend_Magnetic();
-    }
 }

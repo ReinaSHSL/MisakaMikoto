@@ -37,9 +37,4 @@ public class Neodymium extends AbstractMisakaCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         act(nq(NeodymiumMagnet.ID, m));
     }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Neodymium();
-    }
 }

@@ -40,9 +40,4 @@ public class Strike_Magnetic extends AbstractMisakaCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         act(na(m, nd(d)));
     }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Strike_Magnetic();
-    }
 }

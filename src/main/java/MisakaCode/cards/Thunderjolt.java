@@ -40,9 +40,4 @@ public class Thunderjolt extends AbstractMisakaCard {
         act(na(m, nd(d)));
         act(ns(we(m)));
     }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Thunderjolt();
-    }
 }
