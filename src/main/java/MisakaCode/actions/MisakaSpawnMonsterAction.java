@@ -3,7 +3,9 @@ package MisakaCode.actions;
 import MisakaCode.cards.AbstractMisakaCard;
 import MisakaCode.monsters.AbstractMisakaMonster;
 import MisakaCode.monsters.NeodymiumMagnet;
+import MisakaCode.powers.PositivelyChargedPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.SpawnMonsterAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -32,7 +34,9 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
             target.drawX += shoveAmount;
             switch (m) {
                 case NeodymiumMagnet.ID:
-                    act(new SpawnMonsterAction(new NeodymiumMagnet(offsetX), false, index));
+                    NeodymiumMagnet neodymiumMagnet = new NeodymiumMagnet(offsetX);
+                    AbstractDungeon.getCurrRoom().monsters.addMonster(index, neodymiumMagnet);
+                    act(new ApplyPowerAction(neodymiumMagnet, neodymiumMagnet, new PositivelyChargedPower(neodymiumMagnet)));
                     tickDuration();
             }
         }

@@ -19,13 +19,7 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
     }
 
     @Override
-    public void usePreBattleAction() {
-        act(ns(wq()));
-    }
-
-    @Override
     public void takeTurn() {
-
     }
 
     @Override
