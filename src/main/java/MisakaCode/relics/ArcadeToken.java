@@ -17,9 +17,4 @@ public class ArcadeToken extends AbstractMisakaRelic {
         return DESCRIPTIONS[0];
     }
 
-    @Override
-    public AbstractRelic makeCopy() {
-        return new ArcadeToken();
-    }
-
 }
