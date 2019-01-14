@@ -3,6 +3,10 @@ package MisakaCode.character;
 import java.util.ArrayList;
 
 import MisakaCode.MisakaModInitializer;
+import MisakaCode.cards.Defend_Magnetic;
+import MisakaCode.cards.Strike_Magnetic;
+import MisakaCode.cards.Thunderjolt;
+import MisakaCode.monsters.NeodymiumMagnet;
 import MisakaCode.patches.AbstractCardEnum;
 import MisakaCode.patches.MisakaMikotoEnum;
 import com.megacrit.cardcrawl.cards.blue.Strike_Blue;
@@ -60,8 +64,14 @@ public class MisakaMikoto extends CustomPlayer {
 
     @Override
     public ArrayList<String> getStartingDeck() {
-        ArrayList<String> retVal = new ArrayList<>();
-        return retVal;
+        ArrayList<String> starterDeck = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            starterDeck.add(Strike_Magnetic.ID);
+            starterDeck.add(Defend_Magnetic.ID);
+        }
+        starterDeck.add(Thunderjolt.ID);
+        starterDeck.add(NeodymiumMagnet.ID);
+        return starterDeck;
     }
 
     public ArrayList<String> getStartingRelics() {
