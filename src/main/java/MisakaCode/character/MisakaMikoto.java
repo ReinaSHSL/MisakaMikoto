@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import MisakaCode.MisakaModInitializer;
 import MisakaCode.cards.Defend_Magnetic;
+import MisakaCode.cards.Neodymium;
 import MisakaCode.cards.Strike_Magnetic;
 import MisakaCode.cards.Thunderjolt;
 import MisakaCode.monsters.NeodymiumMagnet;
@@ -116,7 +117,7 @@ public class MisakaMikoto extends CustomPlayer {
 
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Strike_Blue(); //TODO
+        return new Neodymium();
     }
 
     @Override
