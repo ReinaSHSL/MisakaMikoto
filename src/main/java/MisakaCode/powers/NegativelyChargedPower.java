@@ -1,5 +1,6 @@
 package MisakaCode.powers;
 
+import MisakaCode.actions.RepelAction;
 import MisakaCode.tools.TextureLoader;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
