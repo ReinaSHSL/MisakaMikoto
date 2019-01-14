@@ -34,17 +34,34 @@ public class NegativelyChargedPower extends AbstractMisakaPower {
         if (this.owner.hasPower(PositivelyChargedPower.POWER_ID)) {
             act(new RemoveSpecificPowerAction(this.owner, this.owner, PositivelyChargedPower.POWER_ID));
         }
-        for (AbstractMonster m : aq()) {
-            if (this.owner instanceof AbstractMonster) {
-                AbstractMonster chargedMonster = (AbstractMonster)this.owner;
+        if (this.owner instanceof AbstractMonster) {
+            AbstractMonster chargedMonster = (AbstractMonster)this.owner;
+            for (AbstractMonster m : aq()) {
                 int ownerIndex = aq().indexOf(chargedMonster);
                 int monsterIndex = aq().indexOf(m);
                 if (m.hasPower(PositivelyChargedPower.POWER_ID) && Math.abs(ownerIndex - monsterIndex) > 1) {
                     attractedMonsters.add(m);
                 }
                 if (m.hasPower(NegativelyChargedPower.POWER_ID) && Math.abs(ownerIndex - monsterIndex) == 1) {
-                    repelledMonsters.add(m);
+                    if (
+                            (aq().get(monsterIndex - 1) != null && aq().get(monsterIndex - 1) != this.owner)
+                                    || (aq().get(monsterIndex + 1) != null && aq().get(monsterIndex + 1) != this.owner)
+                                    || (aq().get(ownerIndex - 1) != null && aq().get(ownerIndex - 1) != m)
+                                    || (aq().get(ownerIndex + 1) != null && aq().get(ownerIndex + 1) != m)
+                    ) {
+                        repelledMonsters.add(m);
+                    }
                 }
+            }
+        }
+        if (repelledMonsters.size() != 0) {
+            for (AbstractMonster m : repelledMonsters) {
+                act(new RepelAction(this.owner, m));
+            }
+        }
+        if (attractedMonsters.size() != 0) {
+            for (AbstractMonster m : attractedMonsters) {
+                act(new AttractAction(this.owner, m));
             }
         }
     }
