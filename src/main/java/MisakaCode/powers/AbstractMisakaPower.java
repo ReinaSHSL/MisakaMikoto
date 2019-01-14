@@ -47,4 +47,6 @@ public abstract class AbstractMisakaPower extends AbstractPower {
     PositivelyChargedPower wq (AbstractMonster m) { return new PositivelyChargedPower(m); }
 
     NegativelyChargedPower we (AbstractMonster m) { return new NegativelyChargedPower(m); }
+
+
 }
