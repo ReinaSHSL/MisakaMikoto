@@ -2,8 +2,10 @@ package MisakaCode.powers;
 
 import MisakaCode.tools.TextureLoader;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -20,5 +22,13 @@ public class NegativelyChargedPower extends AbstractPower {
         updateDescription();
         this.img = TextureLoader.getTexture("MisakaResources/images/powers/Negative.png");
         this.canGoNegative = false;
+    }
+
+    @Override
+    public void onInitialApplication() {
+        if (this.owner.hasPower(PositivelyChargedPower.POWER_ID)) {
+            act(new RemoveSpecificPowerAction(this.owner, this.owner, PositivelyChargedPower.POWER_ID));
+        }
+        for (wq())
     }
 }
