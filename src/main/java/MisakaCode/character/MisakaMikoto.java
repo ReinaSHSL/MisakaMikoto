@@ -49,8 +49,8 @@ public class MisakaMikoto extends CustomPlayer {
 
     public MisakaMikoto(String name) {
         super(name, MisakaMikotoEnum.THE_RAILGUN, null, null, new SpriterAnimation("MisakaResources/images/character/animations.scml"));
-        this.dialogX = (this.drawX + 0.0F * Settings.scale); // set location for text bubbles
-        this.dialogY = (this.drawY + 220.0F * Settings.scale); // you can just copy these values
+        this.dialogX = (this.drawX + 0.0F * Settings.scale);
+        this.dialogY = (this.drawY + 220.0F * Settings.scale);
 
         initializeClass(null, "MisakaResources/images/character/shoulder2.png", "MisakaResources/images/character/shoulder.png", "MisakaResources/images/character/corpse.png",
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN));
@@ -74,8 +74,8 @@ public class MisakaMikoto extends CustomPlayer {
     }
 
     public ArrayList<String> getStartingRelics() {
-        ArrayList<String> retVal = new ArrayList<>();
-        return retVal;
+        ArrayList<String> starterRelics = new ArrayList<>();
+        return starterRelics;
     }
 
     @Override
