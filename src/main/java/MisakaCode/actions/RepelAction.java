@@ -9,11 +9,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import java.util.Collections;
 
 public class RepelAction extends AbstractMisakaAction {
-    private AbstractCreature m1;
+    private AbstractMonster m1;
     private AbstractMonster m2;
 
     public RepelAction(AbstractCreature m1, AbstractMonster m2) {
-        this.m1 = m1;
+        if (m1 instanceof AbstractMonster) {
+            this.m1 = (AbstractMonster)m1;
+        }
         this.m2 = m2;
         this.duration = Settings.ACTION_DUR_FASTER;
     }

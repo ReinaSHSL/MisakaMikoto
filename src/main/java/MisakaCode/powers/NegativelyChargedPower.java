@@ -1,5 +1,6 @@
 package MisakaCode.powers;
 
+import MisakaCode.actions.AttractAction;
 import MisakaCode.actions.RepelAction;
 import MisakaCode.tools.TextureLoader;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -55,12 +56,12 @@ public class NegativelyChargedPower extends AbstractMisakaPower {
                 }
             }
         }
-        if (repelledMonsters.size() != 0) {
+        if (!repelledMonsters.isEmpty()) {
             for (AbstractMonster m : repelledMonsters) {
                 act(new RepelAction(this.owner, m));
             }
         }
-        if (attractedMonsters.size() != 0) {
+        if (!attractedMonsters.isEmpty()) {
             for (AbstractMonster m : attractedMonsters) {
                 act(new AttractAction(this.owner, m));
             }
