@@ -44,9 +44,4 @@ public class ChainLightning extends AbstractMisakaCard {
         act(na(m, nd(damage)));
         act(new ChainLightningAction(m, magicNumber, damage));
     }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new ChainLightning();
-    }
 }

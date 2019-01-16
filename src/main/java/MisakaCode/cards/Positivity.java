@@ -40,9 +40,4 @@ public class Positivity extends AbstractMisakaCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         act(na(m, nd(damage)));
     }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new Positivity();
-    }
 }
