@@ -26,6 +26,7 @@ public class Strike_Magnetic extends AbstractMisakaCard {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(BaseModCardTags.BASIC_STRIKE);
         this.tags.add(CardTags.STRIKE);
+        this.damage = this.baseDamage = d;
     }
 
     @Override

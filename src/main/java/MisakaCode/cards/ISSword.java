@@ -1,43 +1,43 @@
 package MisakaCode.cards;
 
 import MisakaCode.patches.AbstractCardEnum;
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
-public class Defend_Magnetic extends AbstractMisakaCard {
-    public static final String ID = "misaka:Defend_Magnetic";
+public class ISSword extends AbstractMisakaCard {
+    public static final String ID = "misaka:ISSword";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
-    private static final String IMG = "MisakaResources/images/cards/Defend_Magnetic";
-    private static final int COST = 1;
+    private static final String IMG = "MisakaResources/images/cards/ISSword";
+    private static final int COST = 0;
     private static final String DESC = cardStrings.DESCRIPTION;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.ATTACK;
     private static final CardColor COLOR = AbstractCardEnum.MISAKA_MAGNETIC;
-    private static final CardRarity RARITY = CardRarity.BASIC;
-    private static final CardTarget TARGET = CardTarget.SELF;
-    private static final int b = 5;
-    private static final int bu = 3;
+    private static final CardRarity RARITY = CardRarity.SPECIAL;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final int d = 2;
 
-    public Defend_Magnetic() {
+    public ISSword() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
-        this.tags.add(BaseModCardTags.BASIC_DEFEND);
-        this.block = this.baseBlock = b;
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
-            ub(bu);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(nz(b));
+
+    }
+
+    @Override
+    public AbstractCard makeCopy() {
+        return new ISSword();
     }
 }

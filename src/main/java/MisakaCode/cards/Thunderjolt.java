@@ -25,6 +25,7 @@ public class Thunderjolt extends AbstractMisakaCard {
     public Thunderjolt() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
         this.tags.add(MisakaCardTags.isPositive);
+        this.damage = this.baseDamage = d;
     }
 
     @Override
