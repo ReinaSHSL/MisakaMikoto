@@ -65,4 +65,10 @@ public class PositivelyChargedPower extends AbstractMisakaPower {
             }
         }
     }
+
+    @Override
+    public void updateDescription() {
+        description = DESCRIPTIONS[0];
+    }
 }
+

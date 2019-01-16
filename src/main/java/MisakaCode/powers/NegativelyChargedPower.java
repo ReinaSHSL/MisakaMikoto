@@ -67,4 +67,9 @@ public class NegativelyChargedPower extends AbstractMisakaPower {
             }
         }
     }
+
+    @Override
+    public void updateDescription() {
+        description = DESCRIPTIONS[0];
+    }
 }
