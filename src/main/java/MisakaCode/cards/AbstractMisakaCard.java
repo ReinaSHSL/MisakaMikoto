@@ -12,6 +12,8 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -74,6 +76,18 @@ public abstract class AbstractMisakaCard extends CustomCard {
     PositivelyChargedPower wq (AbstractMonster m) { return new PositivelyChargedPower(m); }
 
     NegativelyChargedPower we (AbstractMonster m) { return new NegativelyChargedPower(m); }
+
+    AbstractCard io (boolean pos) {
+        AbstractCard c = new ISSword();
+        if (pos) {
+            c.tags.add(MisakaCardTags.isPositive);
+        } else {
+            c.tags.add(MisakaCardTags.isNegative);
+        }
+        return c;
+    }
+
+    MakeTempCardInHandAction ip (AbstractCard c, int i) { return new MakeTempCardInHandAction(c, i); }
 
     boolean q (AbstractMonster m) { return m.hasPower(PositivelyChargedPower.POWER_ID);}
 
