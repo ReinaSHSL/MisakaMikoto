@@ -34,6 +34,7 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
                 if (rt(this) != null) {
                     m2 = rt(this);
                 }
+                act()
         }
     }
 

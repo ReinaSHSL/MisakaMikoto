@@ -4,6 +4,8 @@ import MisakaCode.powers.NegativelyChargedPower;
 import MisakaCode.powers.PositivelyChargedPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
@@ -32,6 +34,10 @@ public abstract class AbstractMisakaMonster extends AbstractMonster {
 
     AbstractMonster rt (AbstractMonster m) { return aq().get(aq().indexOf(m) + 1); }
 
+    DamageAction na (AbstractMonster m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
+
+    DamageAction na (AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) { return new DamageAction(m, i, e); }
+    
     AbstractMonster xz() {
         if (aq().get(aq().indexOf(this) - 1) != null) {
             return aq().get(aq().indexOf(this) - 1);
