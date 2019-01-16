@@ -26,8 +26,14 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
     public void takeTurn() {
         switch (this.nextMove) {
             case 1:
-
                 AbstractMonster m1;
+                AbstractMonster m2;
+                if (re(this) != null) {
+                    m1 = re(this);
+                }
+                if (rt(this) != null) {
+                    m2 = rt(this);
+                }
         }
     }
 

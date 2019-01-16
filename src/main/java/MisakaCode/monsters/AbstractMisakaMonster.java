@@ -28,6 +28,10 @@ public abstract class AbstractMisakaMonster extends AbstractMonster {
 
     ArrayList<AbstractMonster> aq() { return AbstractDungeon.getCurrRoom().monsters.monsters; }
 
+    AbstractMonster re (AbstractMonster m) { return aq().get(aq().indexOf(m) - 1); }
+
+    AbstractMonster rt (AbstractMonster m) { return aq().get(aq().indexOf(m) + 1); }
+
     AbstractMonster xz() {
         if (aq().get(aq().indexOf(this) - 1) != null) {
             return aq().get(aq().indexOf(this) - 1);

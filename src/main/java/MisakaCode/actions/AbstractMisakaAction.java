@@ -15,4 +15,8 @@ public abstract class AbstractMisakaAction extends AbstractGameAction {
     ArrayList<AbstractMonster> aq() { return AbstractDungeon.getCurrRoom().monsters.monsters; }
 
     RemoveSpecificPowerAction az(AbstractCreature c, String ID) { return new RemoveSpecificPowerAction(c, c, ID);}
+
+    AbstractMonster re (AbstractMonster m) { return aq().get(aq().indexOf(m) - 1); }
+
+    AbstractMonster rt (AbstractMonster m) { return aq().get(aq().indexOf(m) + 1); }
 }
