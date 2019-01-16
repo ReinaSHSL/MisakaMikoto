@@ -85,6 +85,7 @@ public class RepelAction extends AbstractMisakaAction {
                 act(az(m1, NegativelyChargedPower.POWER_ID));
                 act(az(m2, NegativelyChargedPower.POWER_ID));
             }
+            tickDuration();
         }
     }
 }
