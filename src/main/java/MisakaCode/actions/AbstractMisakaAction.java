@@ -1,7 +1,9 @@
 package MisakaCode.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -19,4 +21,13 @@ public abstract class AbstractMisakaAction extends AbstractGameAction {
     AbstractMonster re (AbstractMonster m) { return aq().get(aq().indexOf(m) - 1); }
 
     AbstractMonster rt (AbstractMonster m) { return aq().get(aq().indexOf(m) + 1); }
+
+    DamageAction na (AbstractMonster m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
+
+    DamageAction na (AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) { return new DamageAction(m, i, e); }
+
+    DamageInfo nd (int i) {
+        return new DamageInfo(AbstractDungeon.player, i, DamageInfo.DamageType.NORMAL);
+    }
+
 }
