@@ -25,10 +25,23 @@ public class RepelAction extends AbstractMisakaAction {
         if (this.duration == Settings.ACTION_DUR_FASTER) {
             AbstractMonster m1Neighbor = null;
             AbstractMonster m2Neighbor = null;
-            AbstractMonster potentialNeighborLeft = aq().get(aq().indexOf(m1) - 1);
-            AbstractMonster potentialNeighborRight = aq().get(aq().indexOf(m1) + 1);
-            AbstractMonster potentialNeighborLeftTwo = aq().get(aq().indexOf(m2) - 1);
-            AbstractMonster potentialNeighborRightTwo = aq().get(aq().indexOf(m2) + 1);
+            AbstractMonster potentialNeighborLeft = null;
+            AbstractMonster potentialNeighborRight = null;
+            AbstractMonster potentialNeighborLeftTwo = null;
+            AbstractMonster potentialNeighborRightTwo = null;
+            if (aq().get(aq().indexOf(m1) - 1) != null) {
+                potentialNeighborLeft = aq().get(aq().indexOf(m1) - 1);
+            }
+            if (aq().get(aq().indexOf(m1) + 1) != null) {
+                potentialNeighborRight = aq().get(aq().indexOf(m1) + 1);
+            }
+            if (aq().get(aq().indexOf(m1) - 1) != null) {
+                potentialNeighborLeftTwo = aq().get(aq().indexOf(m2) - 1);
+            }
+            if (aq().get(aq().indexOf(m1) + 1) != null) {
+                potentialNeighborRightTwo = aq().get(aq().indexOf(m2) + 1);
+            }
+
             if (m1.hasPower(NegativelyChargedPower.POWER_ID)) {
                 if (potentialNeighborLeft != null && potentialNeighborLeft.hasPower(NegativelyChargedPower.POWER_ID)) {
                     if (potentialNeighborRight != null) {

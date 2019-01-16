@@ -36,12 +36,14 @@ public class AttractAction extends AbstractMisakaAction {
             if (distance > 0) {
                 int positionToPullTo = aq().indexOf(negativeM) + 1;
                 Collections.swap(aq(), aq().indexOf(positiveM), positionToPullTo);
+                act(az(positiveM, PositivelyChargedPower.POWER_ID));
+                act(az(negativeM, NegativelyChargedPower.POWER_ID));
             } else if (distance < 0) {
                 int positionToPullTo = aq().indexOf(negativeM) - 1;
                 Collections.swap(aq(), aq().indexOf(positiveM), positionToPullTo);
+                act(az(positiveM, PositivelyChargedPower.POWER_ID));
+                act(az(negativeM, NegativelyChargedPower.POWER_ID));
             }
-            act(az(positiveM, PositivelyChargedPower.POWER_ID));
-            act(az(negativeM, NegativelyChargedPower.POWER_ID));
             tickDuration();
         }
     }

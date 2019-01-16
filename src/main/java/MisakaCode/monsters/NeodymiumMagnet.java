@@ -1,7 +1,9 @@
 package MisakaCode.monsters;
 
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.MonsterStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class NeodymiumMagnet extends AbstractMisakaMonster {
     public static final String ID = "Mikasa:NeodymiumMagnet";
@@ -16,14 +18,21 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
 
     public NeodymiumMagnet(float offsetX) {
         super(NAME, ID, MAX_HP, HB_X, HB_Y, HB_W, HB_H, IMG, offsetX, 0, true);
+        setHp(5);
+        damage.add(new DamageInfo(this, 5));
     }
 
     @Override
     public void takeTurn() {
+        switch (this.nextMove) {
+            case 1:
+
+                AbstractMonster m1;
+        }
     }
 
     @Override
     protected void getMove(int i) {
-
+        setMove((byte)1, AbstractMonster.Intent.ATTACK, damage.get(0).base);
     }
 }
