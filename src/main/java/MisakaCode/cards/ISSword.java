@@ -19,21 +19,30 @@ public class ISSword extends AbstractMisakaCard {
     private static final CardRarity RARITY = CardRarity.SPECIAL;
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final int d = 2;
+    private static final int du = 2;
+    private static final int b = 2;
+    private static final int bu = 1;
 
     public ISSword() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
+        this.damage = this.baseDamage = d;
+        this.block = this.baseBlock = b;
     }
 
     @Override
     public void upgrade() {
         if (!this.upgraded) {
             this.upgradeName();
+            ud(du);
+            ub(bu);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-
+        act(na(m, nd(d)));
+        if (q(m)) act(na(m, nd(d)));
+        if (w(m)) act(nz(b));
     }
 
     @Override

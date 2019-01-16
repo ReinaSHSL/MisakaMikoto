@@ -75,6 +75,10 @@ public abstract class AbstractMisakaCard extends CustomCard {
 
     NegativelyChargedPower we (AbstractMonster m) { return new NegativelyChargedPower(m); }
 
+    boolean q (AbstractMonster m) { return m.hasPower(PositivelyChargedPower.POWER_ID);}
+
+    boolean w (AbstractMonster m) { return m.hasPower(NegativelyChargedPower.POWER_ID);}
+
     void ub (int i) {
         this.upgradeBlock(i);
     }
