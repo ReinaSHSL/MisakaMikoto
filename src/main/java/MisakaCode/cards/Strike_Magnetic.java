@@ -39,6 +39,6 @@ public class Strike_Magnetic extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(na(m, nd(d)));
+        act(na(m, nd(this.damage)));
     }
 }

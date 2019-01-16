@@ -38,6 +38,6 @@ public class Defend_Magnetic extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(nz(b));
+        act(nz(this.block));
     }
 }
