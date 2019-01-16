@@ -77,6 +77,14 @@ public class RepelAction extends AbstractMisakaAction {
                 m2Neighbor.drawX = m1.drawX;
                 m2.drawX = temp;
             }
+            if (m1.hasPower(PositivelyChargedPower.POWER_ID) || m2.hasPower(PositivelyChargedPower.POWER_ID)) {
+                act(az(m1, PositivelyChargedPower.POWER_ID));
+                act(az(m2, PositivelyChargedPower.POWER_ID));
+            }
+            if (m1.hasPower(NegativelyChargedPower.POWER_ID) || m2.hasPower(NegativelyChargedPower.POWER_ID)) {
+                act(az(m1, NegativelyChargedPower.POWER_ID));
+                act(az(m2, NegativelyChargedPower.POWER_ID));
+            }
         }
     }
 }

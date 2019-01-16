@@ -1,6 +1,8 @@
 package MisakaCode.actions;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -11,4 +13,6 @@ public abstract class AbstractMisakaAction extends AbstractGameAction {
     void act(AbstractGameAction a) { AbstractDungeon.actionManager.addToBottom(a); }
 
     ArrayList<AbstractMonster> aq() { return AbstractDungeon.getCurrRoom().monsters.monsters; }
+
+    RemoveSpecificPowerAction az(AbstractCreature c, String ID) { return new RemoveSpecificPowerAction(c, c, ID);}
 }
