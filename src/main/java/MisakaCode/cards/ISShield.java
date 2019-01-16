@@ -26,14 +26,14 @@ public class ISShield extends AbstractMisakaCard {
 
     public ISShield() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
-        this.block = this.baseBlock = b;
-        this.magicNumber = this.baseMagicNumber = m;
+        block = baseBlock = b;
+        magicNumber = baseMagicNumber = m;
     }
 
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
+        if (!upgraded) {
+            upgradeName();
             ub(bu);
             um(mu);
         }
@@ -41,8 +41,8 @@ public class ISShield extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(nz(this.block));
-        act(ip(io(false), this.magicNumber));
+        act(nz(block));
+        act(ip(io(false), magicNumber));
     }
 
     @Override

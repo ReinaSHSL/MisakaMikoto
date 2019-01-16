@@ -25,14 +25,14 @@ public class ISSword extends AbstractMisakaCard {
 
     public ISSword() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
-        this.damage = this.baseDamage = d;
-        this.block = this.baseBlock = b;
+        damage = baseDamage = d;
+        block = baseBlock = b;
     }
 
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
+        if (!upgraded) {
+            upgradeName();
             ud(du);
             ub(bu);
         }
@@ -40,9 +40,9 @@ public class ISSword extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(na(m, nd(this.damage)));
-        if (q(m)) act(na(m, nd(this.damage)));
-        if (w(m)) act(nz(this.block));
+        act(na(m, nd(damage)));
+        if (q(m)) act(na(m, nd(damage)));
+        if (w(m)) act(nz(block));
     }
 
     @Override

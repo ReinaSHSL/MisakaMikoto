@@ -24,20 +24,20 @@ public class Defend_Magnetic extends AbstractMisakaCard {
 
     public Defend_Magnetic() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
-        this.tags.add(BaseModCardTags.BASIC_DEFEND);
-        this.block = this.baseBlock = b;
+        tags.add(BaseModCardTags.BASIC_DEFEND);
+        block = baseBlock = b;
     }
 
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
+        if (!upgraded) {
+            upgradeName();
             ub(bu);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(nz(this.block));
+        act(nz(block));
     }
 }

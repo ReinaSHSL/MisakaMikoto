@@ -27,8 +27,8 @@ public class Neodymium extends AbstractMisakaCard {
 
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
+        if (!upgraded) {
+            upgradeName();
             uc(cc);
         }
     }

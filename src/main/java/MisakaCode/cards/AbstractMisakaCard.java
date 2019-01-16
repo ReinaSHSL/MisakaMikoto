@@ -33,16 +33,16 @@ public abstract class AbstractMisakaCard extends CustomCard {
     }
 
     public void upgradeMisakaMagicNumber(int i) {
-        this.baseMisakaMagicNumber += i;
-        this.misakaMagicNumberChanged = true;
+        baseMisakaMagicNumber += i;
+        misakaMagicNumberChanged = true;
     }
 
     public boolean isPositive() {
-        return this.hasTag(MisakaCardTags.isPositive);
+        return hasTag(MisakaCardTags.isPositive);
     }
 
     public boolean isNegative() {
-        return this.hasTag(MisakaCardTags.isNegative);
+        return hasTag(MisakaCardTags.isNegative);
     }
 
     void act (AbstractGameAction a) { AbstractDungeon.actionManager.addToBottom(a); }
@@ -52,7 +52,7 @@ public abstract class AbstractMisakaCard extends CustomCard {
     ArrayList<AbstractMonster> aq() { return AbstractDungeon.getCurrRoom().monsters.monsters; }
 
     DamageInfo nd (int i) {
-        return new DamageInfo(AbstractDungeon.player, i, this.damageTypeForTurn);
+        return new DamageInfo(AbstractDungeon.player, i, damageTypeForTurn);
     }
 
     DamageAction na (AbstractMonster m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
@@ -94,20 +94,20 @@ public abstract class AbstractMisakaCard extends CustomCard {
     boolean w (AbstractMonster m) { return m.hasPower(NegativelyChargedPower.POWER_ID);}
 
     void ub (int i) {
-        this.upgradeBlock(i);
+        upgradeBlock(i);
     }
 
     void ud (int i) {
-        this.upgradeDamage(i);
+        upgradeDamage(i);
     }
 
     void um (int i) {
-        this.upgradeMagicNumber(i);
+        upgradeMagicNumber(i);
     }
 
     void umn (int i) {
-        this.upgradeMisakaMagicNumber(i);
+        upgradeMisakaMagicNumber(i);
     }
 
-    void uc (int i) { this.upgradeBaseCost(i); }
+    void uc (int i) { upgradeBaseCost(i); }
 }

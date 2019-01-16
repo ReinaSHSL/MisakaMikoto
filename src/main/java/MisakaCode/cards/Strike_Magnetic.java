@@ -24,21 +24,21 @@ public class Strike_Magnetic extends AbstractMisakaCard {
 
     public Strike_Magnetic() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
-        this.tags.add(BaseModCardTags.BASIC_STRIKE);
-        this.tags.add(CardTags.STRIKE);
-        this.damage = this.baseDamage = d;
+        tags.add(BaseModCardTags.BASIC_STRIKE);
+        tags.add(CardTags.STRIKE);
+        damage = baseDamage = d;
     }
 
     @Override
     public void upgrade() {
-        if (!this.upgraded) {
-            this.upgradeName();
+        if (!upgraded) {
+            upgradeName();
             ud(du);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(na(m, nd(this.damage)));
+        act(na(m, nd(damage)));
     }
 }
