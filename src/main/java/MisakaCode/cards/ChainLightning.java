@@ -1,5 +1,6 @@
 package MisakaCode.cards;
 
+import MisakaCode.actions.ChainLightningAction;
 import MisakaCode.patches.AbstractCardEnum;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -20,10 +21,13 @@ public class ChainLightning extends AbstractMisakaCard {
     private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final int d = 4;
     private static final int du = 2;
+    private static final int m = 3;
+    private static final int mu = 1;
 
     public ChainLightning() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = d;
+        magicNumber = baseMagicNumber = m;
     }
 
     @Override
@@ -31,12 +35,14 @@ public class ChainLightning extends AbstractMisakaCard {
         if (!upgraded) {
             upgradeName();
             ud(du);
+            um(mu);
         }
     }
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(new ChainLightningAction(m));
+        act(na(m, nd(damage)));
+        act(new ChainLightningAction(m, magicNumber));
     }
 
     @Override
