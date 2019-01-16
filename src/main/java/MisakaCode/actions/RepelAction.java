@@ -89,7 +89,7 @@ public class RepelAction extends AbstractMisakaAction {
                 temp = m2Neighbor.drawX;
                 m2Neighbor.drawX = m1.drawX;
                 m2.drawX = temp;
-            }
+            } 
             tickDuration();
         }
     }
