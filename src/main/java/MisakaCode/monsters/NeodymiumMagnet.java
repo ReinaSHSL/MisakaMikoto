@@ -19,7 +19,7 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
     public NeodymiumMagnet(float offsetX) {
         super(NAME, ID, MAX_HP, HB_X, HB_Y, HB_W, HB_H, IMG, offsetX, 0, true);
         setHp(5);
-        damage.add(new DamageInfo(this, 5));
+        damage.add(new DamageInfo(this, 3));
     }
 
     @Override
