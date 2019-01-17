@@ -24,7 +24,7 @@ public class Thunderjolt extends AbstractMisakaCard {
 
     public Thunderjolt() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
-        tags.add(MisakaCardTags.isPositive);
+        tags.add(MisakaCardTags.isNegative);
         damage = baseDamage = d;
     }
 
@@ -39,6 +39,5 @@ public class Thunderjolt extends AbstractMisakaCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         act(na(m, nd(damage)));
-        act(ns(we(m)));
     }
 }
