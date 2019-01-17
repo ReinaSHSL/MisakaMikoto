@@ -51,9 +51,19 @@ public class ChainLightningAction extends AbstractMisakaAction {
                     if (aq().get(aq().indexOf(target) + lowestDistance) != null) {
                         eligibleMonsters.add(aq().get(aq().indexOf(target) + lowestDistance));
                     }
-                    int rng = AbstractDungeon.monsterRng.random(eligibleMonsters.size() - 1);
-                    target = aq().get(rng);
-                    act(na(target, nd(damage)));
+                    if (targetedMonsters.containsAll(eligibleMonsters) && eligibleMonsters.containsAll(targetedMonsters)) {
+                        int rng = AbstractDungeon.monsterRng.random(eligibleMonsters.size() - 1);
+                        target = aq().get(rng);
+                        act(na(target, nd(damage)));
+                    } else {
+                        for (AbstractMonster m : eligibleMonsters) {
+                            if (!targetedMonsters.contains(m)) {
+                                target = m;
+                                act(na(target, nd(damage)));
+                            }
+                        }
+                    }
+                    targetedMonsters.add(target);
                     chargedMonsters.clear();
                     eligibleMonsters.clear();
                     count--;
