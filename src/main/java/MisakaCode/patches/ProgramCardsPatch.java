@@ -1,10 +1,13 @@
 package MisakaCode.patches;
 
-import com.evacipated.cardcrawl.modthespire.lib.SpireField;
-import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import MisakaCode.MisakaModInitializer;
+import com.evacipated.cardcrawl.modthespire.lib.*;
+import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import javassist.CannotCompileException;
+import javassist.CtBehavior;
 
 
 public class ProgramCardsPatch {
@@ -36,4 +39,35 @@ public class ProgramCardsPatch {
             ProgramPileField.programPile.get(__instance).clear();
         }
     }
+
+    @SpirePatch(
+            clz = AbstractDungeon.class,
+            method = "update"
+    )
+    public static class ProgramUpdate {
+        @SpireInsertPatch(
+                locator = UpdateLocator.class
+        )
+        public static void Insert(AbstractDungeon __instance) {
+            if (AbstractDungeon.screen == PROGRAM_VIEW) {
+                MisakaModInitializer.programView.update();
+            }
+        }
+    }
+
+    private static class UpdateLocator extends SpireInsertLocator {
+        @Override
+        public int[] Locate(CtBehavior ctBehavior) throws CannotCompileException, PatchingException, PatchingException {
+            Matcher matcher = new Matcher.FieldAccessMatcher(
+                    AbstractDungeon.class, "turnPhaseEffectActive"
+            );
+
+            int[] line = LineFinder.findInOrder(ctBehavior, matcher);
+
+            return line;
+        }
+    }
+
+    @SpireEnum
+    public static AbstractDungeon.CurrentScreen PROGRAM_VIEW;
 }

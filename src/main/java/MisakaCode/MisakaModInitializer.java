@@ -6,6 +6,7 @@ import MisakaCode.patches.AbstractCardEnum;
 import MisakaCode.patches.MisakaCardTags;
 import MisakaCode.patches.MisakaMikotoEnum;
 import MisakaCode.relics.AbstractMisakaRelic;
+import MisakaCode.screens.ProgramPileViewScreen;
 import MisakaCode.tools.CardFilter;
 import MisakaCode.tools.CardIgnore;
 import MisakaCode.tools.CardNoSeen;
@@ -56,6 +57,8 @@ public class MisakaModInitializer implements
     private static final String ENERGY_ORB_GREY_1024 = "MisakaResources/images/1024/energy_orb_magnetic.png";
 
     private static CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("MisakaMikoto");
+
+    public static ProgramPileViewScreen programView = new ProgramPileViewScreen();
 
     public MisakaModInitializer() {
         BaseMod.subscribe(this);
