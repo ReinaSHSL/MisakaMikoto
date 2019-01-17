@@ -19,8 +19,8 @@ public class FuckYouMegacritWhyIsntThisFixedYetPatch {
             locator = Locator.class
     )
     public static SpireReturn Insert(SlimeBoss __instance) {
-        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SpikeSlime_L(-385.0F, 20.0F, 0, __instance.currentHealth), false));
-        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new AcidSlime_L(120.0F, -8.0F, 0, __instance.currentHealth), false));
+        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new SpikeSlime_L(120.0F, 20.0F, 0, __instance.currentHealth), false));
+        AbstractDungeon.actionManager.addToBottom(new SpawnMonsterAction(new AcidSlime_L(-385.0F, -8.0F, 0, __instance.currentHealth), false));
         AbstractDungeon.actionManager.addToBottom(new com.megacrit.cardcrawl.actions.unique.CanLoseAction());
         __instance.setMove(SlimeBoss.MOVES[2], (byte)3, AbstractMonster.Intent.UNKNOWN);
         return SpireReturn.Return(null);
