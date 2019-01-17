@@ -21,5 +21,15 @@ public class ChargePatch {
         if (m != null && c.hasTag(MisakaCardTags.isPositive)) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, AbstractDungeon.player, new PositivelyChargedPower(m)));
         }
+        if (c.target == AbstractCard.CardTarget.ALL_ENEMY || c.target == AbstractCard.CardTarget.ALL && c.hasTag(MisakaCardTags.isNegative)) {
+            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, AbstractDungeon.player, new NegativelyChargedPower(mo)));
+            }
+        }
+        if (c.target == AbstractCard.CardTarget.ALL_ENEMY || c.target == AbstractCard.CardTarget.ALL && c.hasTag(MisakaCardTags.isPositive)) {
+            for (AbstractMonster mo : AbstractDungeon.getCurrRoom().monsters.monsters) {
+                AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(mo, AbstractDungeon.player, new PositivelyChargedPower(mo)));
+            }
+        }
     }
 }
