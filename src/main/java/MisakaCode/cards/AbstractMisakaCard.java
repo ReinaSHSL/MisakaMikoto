@@ -62,8 +62,8 @@ public abstract class AbstractMisakaCard extends CustomCard {
 
     DamageAction na (AbstractMonster m, DamageInfo i, AbstractGameAction.AttackEffect e) { return new DamageAction(m, i, e); }
 
-    GainBlockAction nz (int i) {
-        return new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, i, true);
+    GainBlockAction nz () {
+        return new GainBlockAction(AbstractDungeon.player, AbstractDungeon.player, block, true);
     }
 
     ApplyPowerAction ns (AbstractMonster m, AbstractPower po) { return new ApplyPowerAction(m, AbstractDungeon.player, po, po.amount); }

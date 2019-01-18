@@ -41,7 +41,7 @@ public class ISShield extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(nz(block));
+        act(nz());
         act(ip(io(false), magicNumber));
     }
 
