@@ -40,8 +40,8 @@ public class ISSword extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(na(m, nd(damage)));
-        if (q(m)) act(na(m, nd(damage)));
+        act(na(m, nd()));
+        if (q(m)) act(na(m, nd()));
         if (w(m)) act(nz(block));
     }
 

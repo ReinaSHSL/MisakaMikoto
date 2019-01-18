@@ -38,6 +38,6 @@ public class Positivity extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(na(m, nd(damage)));
+        act(na(m, nd()));
     }
 }

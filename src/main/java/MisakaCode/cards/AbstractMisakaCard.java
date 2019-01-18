@@ -4,6 +4,7 @@ import MisakaCode.actions.AbstractMisakaAction;
 import MisakaCode.actions.MisakaSpawnMonsterAction;
 import MisakaCode.monsters.AbstractMisakaMonster;
 import MisakaCode.patches.MisakaCardTags;
+import MisakaCode.patches.ProgramCardsPatch;
 import MisakaCode.powers.NegativelyChargedPower;
 import MisakaCode.powers.PositivelyChargedPower;
 import basemod.BaseMod;
@@ -14,6 +15,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -27,6 +29,7 @@ public abstract class AbstractMisakaCard extends CustomCard {
     public int misakaMagicNumber;
     public int baseMisakaMagicNumber;
     public boolean misakaMagicNumberChanged = false;
+    public CardGroup pp = ProgramCardsPatch.ProgramPileField.programPile.get(AbstractDungeon.player);
 
     public AbstractMisakaCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, name, img, cost, rawDescription, type, color, rarity, target);
@@ -51,8 +54,8 @@ public abstract class AbstractMisakaCard extends CustomCard {
 
     ArrayList<AbstractMonster> aq() { return AbstractDungeon.getCurrRoom().monsters.monsters; }
 
-    DamageInfo nd (int i) {
-        return new DamageInfo(AbstractDungeon.player, i, damageTypeForTurn);
+    DamageInfo nd () {
+        return new DamageInfo(AbstractDungeon.player, damage, damageTypeForTurn);
     }
 
     DamageAction na (AbstractMonster m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }

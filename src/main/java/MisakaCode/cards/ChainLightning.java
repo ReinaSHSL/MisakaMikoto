@@ -41,7 +41,7 @@ public class ChainLightning extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(na(m, nd(damage)));
+        act(na(m, nd()));
         act(new ChainLightningAction(m, magicNumber, damage));
     }
 }
