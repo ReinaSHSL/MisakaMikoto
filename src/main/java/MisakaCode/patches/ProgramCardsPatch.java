@@ -1,11 +1,14 @@
 package MisakaCode.patches;
 
 import MisakaCode.MisakaModInitializer;
+import MisakaCode.panels.ProgramPilePanel;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.core.OverlayMenu;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.ui.panels.AbstractPanel;
 import javassist.CannotCompileException;
 import javassist.CtBehavior;
 
@@ -65,6 +68,24 @@ public class ProgramCardsPatch {
             int[] line = LineFinder.findInOrder(ctBehavior, matcher);
 
             return line;
+        }
+    }
+
+    @SpirePatch(
+            clz = OverlayMenu.class,
+            method = SpirePatch.CLASS
+    )
+    public static class ProgramPanelField {
+        public static SpireField<AbstractPanel> combatProgramPile = new SpireField<>(ProgramPilePanel::new);
+    }
+
+    @SpirePatch(
+            clz = OverlayMenu.class,
+            method = "update"
+    )
+    public static class UpdateProgramPile {
+        public static void Prefix(OverlayMenu __instance) {
+            ProgramPanelField.combatProgramPile.get(__instance).updatePositions();
         }
     }
 

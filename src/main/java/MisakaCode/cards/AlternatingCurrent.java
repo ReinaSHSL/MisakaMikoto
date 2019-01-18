@@ -37,6 +37,7 @@ public class AlternatingCurrent extends AbstractMisakaCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractCard c : p.hand.group) {
+            //I love you Kio <3
             if (p.hand.group.indexOf(c) % 2 == 0) {
                 c.tags.add(MisakaCardTags.isPositive);
             } else {
@@ -45,3 +46,4 @@ public class AlternatingCurrent extends AbstractMisakaCard {
         }
     }
 }
+
