@@ -2,6 +2,7 @@ package MisakaCode.patches;
 
 import MisakaCode.MisakaModInitializer;
 import MisakaCode.panels.ProgramPilePanel;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.evacipated.cardcrawl.modthespire.patcher.PatchingException;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -86,6 +87,16 @@ public class ProgramCardsPatch {
     public static class UpdateProgramPile {
         public static void Prefix(OverlayMenu __instance) {
             ProgramPanelField.combatProgramPile.get(__instance).updatePositions();
+        }
+    }
+
+    @SpirePatch(
+            clz = OverlayMenu.class,
+            method = "render"
+    )
+    public static class RenderProgramPile {
+        public static void Prefix(OverlayMenu __instance, SpriteBatch sb) {
+            ProgramPanelField.combatProgramPile.get(__instance).render(sb);
         }
     }
 
