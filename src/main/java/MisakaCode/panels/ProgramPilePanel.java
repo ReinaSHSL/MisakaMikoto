@@ -123,7 +123,7 @@ public class ProgramPilePanel extends AbstractPanel {
                 AbstractDungeon.previousScreen = null;
             }
 
-            openProgramPile();
+                openProgramPile();
         }
     }
 
