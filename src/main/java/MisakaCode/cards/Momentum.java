@@ -42,7 +42,7 @@ public class Momentum extends AbstractMisakaCard {
 
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        act(ns(new MomentumPower(magicNumber, misakaMagicNumber)));
+        act(ns(new MomentumPower(p, magicNumber, misakaMagicNumber)));
     }
 
     private void buildDescription() {
