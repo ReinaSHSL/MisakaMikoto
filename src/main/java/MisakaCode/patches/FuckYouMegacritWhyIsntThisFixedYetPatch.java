@@ -30,7 +30,7 @@ public class FuckYouMegacritWhyIsntThisFixedYetPatch {
     private static class Locator extends SpireInsertLocator {
         @Override
         public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
-            Matcher finalMatcher = new Matcher.NewExprMatcher("SpikeSlime_L");
+            Matcher finalMatcher = new Matcher.NewExprMatcher(SpikeSlime_L.class);
             return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
         }
     }
