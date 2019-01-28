@@ -9,6 +9,7 @@ import MisakaCode.powers.NegativelyChargedPower;
 import MisakaCode.powers.PositivelyChargedPower;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
+import com.badlogic.gdx.graphics.Texture;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -32,7 +33,8 @@ public abstract class AbstractMisakaCard extends CustomCard {
     public CardGroup pp = ProgramCardsPatch.ProgramPileField.programPile.get(AbstractDungeon.player);
 
     public AbstractMisakaCard(String id, String name, String img, int cost, String rawDescription, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
-        super(id, name, img, cost, rawDescription, type, color, rarity, target);
+        super(id, name, null, cost, rawDescription, type, color, rarity, target);
+
     }
 
     public void upgradeMisakaMagicNumber(int i) {
