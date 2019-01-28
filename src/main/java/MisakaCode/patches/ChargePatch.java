@@ -6,12 +6,17 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 @SpirePatch(
         clz = UseCardAction.class,
-        method = SpirePatch.CONSTRUCTOR
+        method = SpirePatch.CONSTRUCTOR,
+        paramtypez = {
+                AbstractCard.class,
+                AbstractCreature.class
+        }
 )
 public class ChargePatch {
     public static void Postfix(UseCardAction __instance, AbstractCard c, AbstractMonster m) {
