@@ -15,17 +15,18 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
     private static final float HB_W = 230.0F;
     private static final float HB_H = 240.0F;
     private static final String IMG = "MisakaResources/images/monsters/NeodymiumMagnet.png";
+    private static final int DAMAGE = 3;
 
     public NeodymiumMagnet(float offsetX) {
         super(NAME, ID, MAX_HP, HB_X, HB_Y, HB_W, HB_H, IMG, offsetX, 0, true);
         setHp(5);
-        damage.add(new DamageInfo(this, 3));
+        damage.add(new DamageInfo(this, DAMAGE));
     }
 
     @Override
     public void takeTurn() {
         switch (nextMove) {
-            case 1:
+            case 0:
                 if (re(this) != null) {
                     AbstractMonster m1 = re(this);
                     act(na(m1, damage.get(0)));
@@ -43,6 +44,6 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
 
     @Override
     protected void getMove(int i) {
-        setMove((byte)1, AbstractMonster.Intent.ATTACK, damage.get(0).base);
+        setMove((byte)0, AbstractMonster.Intent.ATTACK, damage.get(0).base);
     }
 }
