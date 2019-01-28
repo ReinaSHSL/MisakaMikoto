@@ -32,7 +32,7 @@ public class PositivelyChargedPower extends AbstractMisakaPower {
         ArrayList<AbstractMonster> attractedMonsters = new ArrayList<>();
         ArrayList<AbstractMonster> repelledMonsters = new ArrayList<>();
         if (this.owner.hasPower(NegativelyChargedPower.POWER_ID)) {
-            act(new RemoveSpecificPowerAction(this.owner, this.owner, PositivelyChargedPower.POWER_ID));
+            act(new RemoveSpecificPowerAction(this.owner, this.owner, NegativelyChargedPower.POWER_ID));
         }
         if (this.owner instanceof AbstractMonster) {
             AbstractMonster chargedMonster = (AbstractMonster)this.owner;

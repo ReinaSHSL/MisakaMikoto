@@ -80,25 +80,25 @@ public class ProgramCardsPatch {
         public static SpireField<AbstractPanel> combatProgramPile = new SpireField<>(ProgramPilePanel::new);
     }
 
-    @SpirePatch(
-            clz = OverlayMenu.class,
-            method = "update"
-    )
-    public static class UpdateProgramPile {
-        public static void Prefix(OverlayMenu __instance) {
-            ProgramPanelField.combatProgramPile.get(__instance).updatePositions();
-        }
-    }
-
-    @SpirePatch(
-            clz = OverlayMenu.class,
-            method = "render"
-    )
-    public static class RenderProgramPile {
-        public static void Prefix(OverlayMenu __instance, SpriteBatch sb) {
-            ProgramPanelField.combatProgramPile.get(__instance).render(sb);
-        }
-    }
+//    @SpirePatch(
+//            clz = OverlayMenu.class,
+//            method = "update"
+//    )
+//    public static class UpdateProgramPile {
+//        public static void Prefix(OverlayMenu __instance) {
+//            ProgramPanelField.combatProgramPile.get(__instance).updatePositions();
+//        }
+//    }
+//
+//    @SpirePatch(
+//            clz = OverlayMenu.class,
+//            method = "render"
+//    )
+//    public static class RenderProgramPile {
+//        public static void Prefix(OverlayMenu __instance, SpriteBatch sb) {
+//            ProgramPanelField.combatProgramPile.get(__instance).render(sb);
+//        }
+//    }
 
     @SpireEnum
     public static AbstractDungeon.CurrentScreen PROGRAM_VIEW;
