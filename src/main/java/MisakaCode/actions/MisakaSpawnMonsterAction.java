@@ -19,9 +19,9 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
     private String m;
     private AbstractMonster target;
     private float shoveAmount = 50.0F * Settings.scale;
-    public MisakaSpawnMonsterAction(String m, AbstractMonster target) {
-        m = m;
-        target = target;
+    public MisakaSpawnMonsterAction(String monsterID, AbstractMonster target) {
+        m = monsterID;
+        this.target = target;
         duration = Settings.ACTION_DUR_FASTER;
     }
 
@@ -37,11 +37,11 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
             if (leftM != null) {
                 for (AbstractMonster m : aq()) {
                     if (aq().indexOf(m) > aq().indexOf(leftM)) break;
-                    m.drawY -= 50F;
+                    m.drawY -= shoveAmount;
                 }
             }
             for (int i = aq().indexOf(target); i < aq().size(); i++) {
-                aq().get(i).drawX += 50F;
+                aq().get(i).drawX += shoveAmount;
             }
             switch (m) {
                 case NeodymiumMagnet.ID:
@@ -55,7 +55,7 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
                     act(new TalkAction(slimeyboi, "Aw, something went wrong... NL please let the devs know! NL Also yell at MegaCrit for me being a hardcoded mess.", 4.0F, 4.0F));
                     break;
             }
-            tickDuration();
+            isDone = true;
         }
     }
 }
