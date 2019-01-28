@@ -2,6 +2,7 @@ package MisakaCode.monsters;
 
 import MisakaCode.powers.NegativelyChargedPower;
 import MisakaCode.powers.PositivelyChargedPower;
+import MisakaCode.tools.TextureLoader;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -15,8 +16,9 @@ import java.util.ArrayList;
 
 public abstract class AbstractMisakaMonster extends AbstractMonster {
 
-    public AbstractMisakaMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgUrl, float offsetX, float offsetY, boolean ignoreBlights) {
-        super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, imgUrl, offsetX, offsetY, ignoreBlights);
+    public AbstractMisakaMonster(String name, String id, int maxHealth, float hb_x, float hb_y, float hb_w, float hb_h, String imgDir, float offsetX, float offsetY, boolean ignoreBlights) {
+        super(name, id, maxHealth, hb_x, hb_y, hb_w, hb_h, "", offsetX, offsetY, ignoreBlights);
+        img = TextureLoader.getTexture(imgDir);
     }
 
     void act (AbstractGameAction a) { AbstractDungeon.actionManager.addToBottom(a); }
@@ -36,7 +38,6 @@ public abstract class AbstractMisakaMonster extends AbstractMonster {
     AbstractMonster rt (AbstractMonster m) { return aq().get(aq().indexOf(m) + 1); }
 
     DamageAction na (AbstractCreature m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
-
     DamageAction na (AbstractCreature m, DamageInfo i, AbstractGameAction.AttackEffect e) { return new DamageAction(m, i, e); }
 
     AbstractMonster xz() {
