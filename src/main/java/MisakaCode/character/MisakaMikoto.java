@@ -67,8 +67,14 @@ public class MisakaMikoto extends CustomPlayer {
     @Override
     public ArrayList<String> getStartingDeck() {
         ArrayList<String> starterDeck = new ArrayList<>();
-        for (int i = 0; i < 4; i++) starterDeck.add(Strike_Magnetic.ID);
-        for (int i = 0; i < 4; i++) starterDeck.add(Defend_Magnetic.ID);
+        starterDeck.add(Strike_Magnetic.ID);
+        starterDeck.add(Strike_Magnetic.ID);
+        starterDeck.add(Strike_Magnetic.ID);
+        starterDeck.add(Strike_Magnetic.ID);
+        starterDeck.add(Defend_Magnetic.ID);
+        starterDeck.add(Defend_Magnetic.ID);
+        starterDeck.add(Defend_Magnetic.ID);
+        starterDeck.add(Defend_Magnetic.ID);
         starterDeck.add(Thunderjolt.ID);
         starterDeck.add(NeodymiumMagnet.ID);
         return starterDeck;

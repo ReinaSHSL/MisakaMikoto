@@ -7,13 +7,13 @@
       " [E] ."
     ]
   },
-  "misaka:PasitivelyChargedPower": {
+  "misaka:Positive": {
     "NAME": "Positive",
     "DESCRIPTIONS": [
       "This monster is attracted to - Charges and repelled to + Charges."
     ]
   },
-  "misaka:NegativelyChargedPower": {
+  "misaka:Negative": {
     "NAME": "Negative",
     "DESCRIPTIONS": [
       "This monster is attracted to + Charges and repelled to - Charges."
