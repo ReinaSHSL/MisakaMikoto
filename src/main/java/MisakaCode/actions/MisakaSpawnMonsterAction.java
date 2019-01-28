@@ -30,7 +30,11 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
         if (this.duration == Settings.ACTION_DUR_FASTER) {
             int index = aq().indexOf(target);
             float offsetX = (target.drawX - ((float)Settings.WIDTH * 0.75F)) / Settings.scale;
-            if (aq().get(index - 1) != null) {
+            AbstractMonster leftM = null;
+            if (aq().indexOf(target) != 0) {
+                leftM = aq().get(index - 1);
+            }
+            if (leftM != null) {
                 AbstractMonster moveMonsterLeft = aq().get(index - 1);
                 moveMonsterLeft.drawX -= shoveAmount;
             }
