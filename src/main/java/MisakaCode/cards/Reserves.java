@@ -24,7 +24,7 @@ public class Reserves extends AbstractMisakaCard {
 
     public Reserves() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMisakaMagicNumber = m;
+        magicNumber = baseMagicNumber = m;
     }
 
     @Override

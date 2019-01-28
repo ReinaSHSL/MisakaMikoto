@@ -158,14 +158,13 @@ public class MisakaModInitializer implements
     public void receiveEditRelics() {
         try {
             autoAddRelics();
-        } catch (URISyntaxException | IllegalAccessException | InstantiationException | CannotCompileException | NotFoundException e) {
+        } catch (URISyntaxException | IllegalAccessException | InstantiationException | CannotCompileException | NotFoundException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     private static void autoAddRelics()
-            throws URISyntaxException, IllegalAccessException, InstantiationException, NotFoundException, CannotCompileException
-    {
+            throws URISyntaxException, IllegalAccessException, InstantiationException, NotFoundException, CannotCompileException, ClassNotFoundException {
         ClassFinder finder = new ClassFinder();
         URL url = MisakaModInitializer.class.getProtectionDomain().getCodeSource().getLocation();
         finder.add(new File(url.toURI()));
@@ -202,7 +201,7 @@ public class MisakaModInitializer implements
             }
             System.out.println(classInfo.getClassName());
             // Different
-            AbstractMisakaRelic relic = (AbstractMisakaRelic) Loader.getClassPool().toClass(cls).newInstance();
+            AbstractMisakaRelic relic = (AbstractMisakaRelic) Loader.getClassPool().getClassLoader().loadClass(cls.getName()).newInstance();
             if (relic.color == null) {
                 BaseMod.addRelic(relic, RelicType.SHARED);
             } else {
