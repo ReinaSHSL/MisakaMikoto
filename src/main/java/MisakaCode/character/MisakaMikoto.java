@@ -76,7 +76,7 @@ public class MisakaMikoto extends CustomPlayer {
         starterDeck.add(Defend_Magnetic.ID);
         starterDeck.add(Defend_Magnetic.ID);
         starterDeck.add(Thunderjolt.ID);
-        starterDeck.add(NeodymiumMagnet.ID);
+        starterDeck.add(Neodymium.ID);
         return starterDeck;
     }
 
