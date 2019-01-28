@@ -20,14 +20,14 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
     private AbstractMonster target;
     private float shoveAmount = 50.0F * Settings.scale;
     public MisakaSpawnMonsterAction(String m, AbstractMonster target) {
-        this.m = m;
-        this.target = target;
-        this.duration = Settings.ACTION_DUR_FASTER;
+        m = m;
+        target = target;
+        duration = Settings.ACTION_DUR_FASTER;
     }
 
     @Override
     public void update() {
-        if (this.duration == Settings.ACTION_DUR_FASTER) {
+        if (duration == Settings.ACTION_DUR_FASTER) {
             int index = aq().indexOf(target);
             float offsetX = (target.drawX - ((float)Settings.WIDTH * 0.75F)) / Settings.scale;
             AbstractMonster leftM = null;
@@ -35,21 +35,27 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
                 leftM = aq().get(index - 1);
             }
             if (leftM != null) {
-                AbstractMonster moveMonsterLeft = aq().get(index - 1);
-                moveMonsterLeft.drawX -= shoveAmount;
+                for (AbstractMonster m : aq()) {
+                    if (aq().indexOf(m) > aq().indexOf(leftM)) break;
+                    m.drawY -= 50F;
+                }
             }
-            target.drawX += shoveAmount;
+            for (int i = aq().indexOf(target); i < aq().size(); i++) {
+                aq().get(i).drawX += 50F;
+            }
             switch (m) {
                 case NeodymiumMagnet.ID:
                     NeodymiumMagnet neodymiumMagnet = new NeodymiumMagnet(offsetX);
                     AbstractDungeon.getCurrRoom().monsters.addMonster(index, neodymiumMagnet);
                     act(new ApplyPowerAction(neodymiumMagnet, neodymiumMagnet, new PositivelyChargedPower(neodymiumMagnet)));
-                    tickDuration();
+                    break;
                 default:
                     AbstractMonster slimeyboi = new ApologySlime();
                     act(new SpawnMonsterAction(slimeyboi, false));
                     act(new TalkAction(slimeyboi, "Aw, something went wrong... NL please let the devs know! NL Also yell at MegaCrit for me being a hardcoded mess.", 4.0F, 4.0F));
+                    break;
             }
+            tickDuration();
         }
     }
 }
