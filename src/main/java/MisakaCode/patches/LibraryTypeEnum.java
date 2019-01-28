@@ -5,5 +5,5 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 
 public class LibraryTypeEnum {
     @SpireEnum
-    CardLibrary.LibraryType MISAKA_MAGNETIC;
+    public static CardLibrary.LibraryType MISAKA_MAGNETIC;
 }
