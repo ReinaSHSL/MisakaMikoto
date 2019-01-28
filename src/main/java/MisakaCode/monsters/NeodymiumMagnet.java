@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.localization.MonsterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class NeodymiumMagnet extends AbstractMisakaMonster {
-    public static final String ID = "Mikasa:NeodymiumMagnet";
+    public static final String ID = "misaka:NeodymiumMagnet";
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     private static final String NAME = monsterStrings.NAME;
     private static final int MAX_HP = 5;
