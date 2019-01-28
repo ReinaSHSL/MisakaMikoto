@@ -18,7 +18,7 @@ import com.megacrit.cardcrawl.monsters.exordium.ApologySlime;
 public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
     private String m;
     private AbstractMonster target;
-    private float shoveAmount = 50.0F * Settings.scale;
+    private float shoveAmount = 200.0F * Settings.scale;
     public MisakaSpawnMonsterAction(String monsterID, AbstractMonster target) {
         m = monsterID;
         this.target = target;
