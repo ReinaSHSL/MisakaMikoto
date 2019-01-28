@@ -29,9 +29,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public class ProgramPilePanel extends AbstractPanel {
-    private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString("rogramTip");
-    public static final String[] MSG = tutorialStrings.TEXT;
-    public static final String[] LABEL = tutorialStrings.LABEL;
     private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("misaka:ProgramPilePanel");
     public static final String[] TEXT = uiStrings.TEXT;
 
