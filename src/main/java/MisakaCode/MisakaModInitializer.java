@@ -94,13 +94,12 @@ public class MisakaModInitializer implements
 
         try {
             autoAddCards();
-        } catch (URISyntaxException | IllegalAccessException | InstantiationException | NotFoundException | CannotCompileException e) {
+        } catch (URISyntaxException | IllegalAccessException | InstantiationException | NotFoundException | CannotCompileException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private static void autoAddCards() throws URISyntaxException, IllegalAccessException, InstantiationException, NotFoundException, CannotCompileException
-    {
+    private static void autoAddCards() throws URISyntaxException, IllegalAccessException, InstantiationException, NotFoundException, CannotCompileException, ClassNotFoundException {
         ClassFinder finder = new ClassFinder();
         URL url = MisakaModInitializer.class.getProtectionDomain().getCodeSource().getLocation();
         finder.add(new File(url.toURI()));
@@ -137,7 +136,7 @@ public class MisakaModInitializer implements
             }
 
             System.out.println(classInfo.getClassName());
-            AbstractCard card = (AbstractCard) Loader.getClassPool().toClass(cls).newInstance();
+            AbstractCard card = (AbstractCard) Loader.getClassPool().getClassLoader().loadClass(cls.getName()).newInstance();
             BaseMod.addCard(card);
             if (cls.hasAnnotation(CardNoSeen.class)) {
                 UnlockTracker.hardUnlockOverride(card.cardID);
