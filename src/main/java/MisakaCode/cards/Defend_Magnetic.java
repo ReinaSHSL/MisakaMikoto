@@ -12,7 +12,7 @@ public class Defend_Magnetic extends AbstractMisakaCard {
     public static final String ID = "misaka:Defend_Magnetic";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
-    private static final String IMG = "MisakaResources/images/cards/Defend_Magnetic";
+    private static final String IMG = "MisakaResources/images/cards/Defend_Magnetic.png";
     private static final int COST = 1;
     private static final String DESC = cardStrings.DESCRIPTION;
     private static final CardType TYPE = CardType.SKILL;

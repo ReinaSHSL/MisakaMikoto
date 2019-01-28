@@ -13,7 +13,7 @@ public class Momentum extends AbstractMisakaCard {
     public static final String ID = "misaka:Momentum";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
-    private static final String IMG = "MisakaResources/images/cards/Momentum";
+    private static final String IMG = "MisakaResources/images/cards/Momentum.png";
     private static final int COST = 0;
     private static final String DESC = cardStrings.DESCRIPTION;
     private static final CardType TYPE = CardType.SKILL;

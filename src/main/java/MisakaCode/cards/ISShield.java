@@ -12,7 +12,7 @@ public class ISShield extends AbstractMisakaCard {
     public static final String ID = "misaka:ISShield";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
-    private static final String IMG = "MisakaResources/images/cards/ISShield";
+    private static final String IMG = "MisakaResources/images/cards/ISShield.png";
     private static final int COST = 2;
     private static final String DESC = cardStrings.DESCRIPTION;
     private static final CardType TYPE = CardType.SKILL;

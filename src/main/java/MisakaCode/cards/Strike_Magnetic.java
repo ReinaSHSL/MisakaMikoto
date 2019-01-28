@@ -12,7 +12,7 @@ public class Strike_Magnetic extends AbstractMisakaCard {
     public static final String ID = "misaka:Strike_Magnetic";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
-    private static final String IMG = "MisakaResources/images/cards/Strike";
+    private static final String IMG = "MisakaResources/images/cards/Strike.png";
     private static final int COST = 1;
     private static final String DESC = cardStrings.DESCRIPTION;
     private static final AbstractCard.CardType TYPE = CardType.ATTACK;

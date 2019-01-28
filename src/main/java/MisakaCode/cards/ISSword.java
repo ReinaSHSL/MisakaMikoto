@@ -11,7 +11,7 @@ public class ISSword extends AbstractMisakaCard {
     public static final String ID = "misaka:ISSword";
     public static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String NAME = cardStrings.NAME;
-    private static final String IMG = "MisakaResources/images/cards/ISSword";
+    private static final String IMG = "MisakaResources/images/cards/ISSword.png";
     private static final int COST = 0;
     private static final String DESC = cardStrings.DESCRIPTION;
     private static final CardType TYPE = CardType.ATTACK;
