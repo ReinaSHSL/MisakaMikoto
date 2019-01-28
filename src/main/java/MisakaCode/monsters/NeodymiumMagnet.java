@@ -18,22 +18,28 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
     private static final int DAMAGE = 3;
 
     public NeodymiumMagnet(float offsetX) {
-        super(NAME, ID, MAX_HP, HB_X, HB_Y, HB_W, HB_H, IMG, offsetX, 0, true);
+        super(NAME, ID, MAX_HP, HB_X, HB_Y, HB_W, HB_H, IMG, offsetX, 0);
         setHp(5);
         damage.add(new DamageInfo(this, DAMAGE));
+        setMove((byte)0, Intent.ATTACK, damage.get(0).base);
+        createIntent();
     }
 
     @Override
     public void takeTurn() {
         switch (nextMove) {
             case 0:
-                if (re(this) != null) {
-                    AbstractMonster m1 = re(this);
-                    act(na(m1, damage.get(0)));
+                if (aq().indexOf(this) != 0) {
+                    if (re(this) != null) {
+                        AbstractMonster m1 = re(this);
+                        act(na(m1, damage.get(0)));
+                    }
                 }
-                if (rt(this) != null) {
-                    AbstractMonster m2 = rt(this);
-                    act(na(m2, damage.get(0)));
+                if (aq().indexOf(this) != aq().size() - 1) {
+                    if (rt(this) != null) {
+                        AbstractMonster m2 = rt(this);
+                        act(na(m2, damage.get(0)));
+                    }
                 }
                 break;
             default:
@@ -44,6 +50,6 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
 
     @Override
     protected void getMove(int i) {
-        setMove((byte)0, AbstractMonster.Intent.ATTACK, damage.get(0).base);
+        setMove((byte)0, Intent.ATTACK, damage.get(0).base);
     }
 }
