@@ -18,24 +18,24 @@ public class PositivelyChargedPower extends AbstractMisakaPower {
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public PositivelyChargedPower(AbstractCreature owner) {
-        this.name = NAME;
-        this.ID = POWER_ID;
-        this.owner = owner;
+    public PositivelyChargedPower(AbstractCreature target) {
+        name = NAME;
+        ID = POWER_ID;
+        owner = target;
         updateDescription();
-        this.img = TextureLoader.getTexture("MisakaResources/images/powers/Positive.png");
-        this.canGoNegative = false;
+        img = TextureLoader.getTexture("MisakaResources/images/powers/Positive.png");
+        canGoNegative = false;
     }
 
     @Override
     public void onInitialApplication() {
         ArrayList<AbstractMonster> attractedMonsters = new ArrayList<>();
         ArrayList<AbstractMonster> repelledMonsters = new ArrayList<>();
-        if (this.owner.hasPower(NegativelyChargedPower.POWER_ID)) {
-            act(new RemoveSpecificPowerAction(this.owner, this.owner, NegativelyChargedPower.POWER_ID));
+        if (owner.hasPower(NegativelyChargedPower.POWER_ID)) {
+            act(new RemoveSpecificPowerAction(owner, owner, NegativelyChargedPower.POWER_ID));
         }
-        if (this.owner instanceof AbstractMonster) {
-            AbstractMonster chargedMonster = (AbstractMonster)this.owner;
+        if (owner instanceof AbstractMonster) {
+            AbstractMonster chargedMonster = (AbstractMonster)owner;
             for (AbstractMonster m : aq()) {
                 int ownerIndex = aq().indexOf(chargedMonster);
                 int monsterIndex = aq().indexOf(m);
@@ -44,8 +44,8 @@ public class PositivelyChargedPower extends AbstractMisakaPower {
                 }
                 if (m.hasPower(PositivelyChargedPower.POWER_ID) && Math.abs(ownerIndex - monsterIndex) == 1) {
                     if (
-                            (aq().get(monsterIndex - 1) != null && aq().get(monsterIndex - 1) != this.owner)
-                                    || (aq().get(monsterIndex + 1) != null && aq().get(monsterIndex + 1) != this.owner)
+                            (aq().get(monsterIndex - 1) != null && aq().get(monsterIndex - 1) != owner)
+                                    || (aq().get(monsterIndex + 1) != null && aq().get(monsterIndex + 1) != owner)
                                     || (aq().get(ownerIndex - 1) != null && aq().get(ownerIndex - 1) != m)
                                     || (aq().get(ownerIndex + 1) != null && aq().get(ownerIndex + 1) != m)
                     ) {
@@ -56,12 +56,12 @@ public class PositivelyChargedPower extends AbstractMisakaPower {
         }
         if (!repelledMonsters.isEmpty()) {
             for (AbstractMonster m : repelledMonsters) {
-                act(new RepelAction(this.owner, m));
+                act(new RepelAction(owner, m));
             }
         }
         if (!attractedMonsters.isEmpty()) {
             for (AbstractMonster m : attractedMonsters) {
-                act(new AttractAction(this.owner, m));
+                act(new AttractAction(owner, m));
             }
         }
     }

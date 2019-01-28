@@ -50,8 +50,8 @@ public class MisakaMikoto extends CustomPlayer {
 
     public MisakaMikoto(String name) {
         super(name, MisakaMikotoEnum.THE_RAILGUN, null, null, new SpriterAnimation("MisakaResources/images/character/animations.scml"));
-        this.dialogX = (this.drawX + 0.0F * Settings.scale);
-        this.dialogY = (this.drawY + 220.0F * Settings.scale);
+        dialogX = (drawX + 0.0F * Settings.scale);
+        dialogY = (drawY + 220.0F * Settings.scale);
 
         initializeClass(null, "MisakaResources/images/character/shoulder2.png", "MisakaResources/images/character/shoulder.png", "MisakaResources/images/character/corpse.png",
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN));
@@ -135,7 +135,7 @@ public class MisakaMikoto extends CustomPlayer {
 
     @Override
     public AbstractPlayer newInstance() {
-        return new MisakaMikoto(this.name);
+        return new MisakaMikoto(name);
     }
 
     @Override

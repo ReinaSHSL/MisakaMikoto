@@ -12,17 +12,17 @@ public class AttractAction extends AbstractMisakaAction {
     private AbstractMonster m1;
     private AbstractMonster m2;
 
-    public AttractAction(AbstractCreature m1, AbstractMonster m2) {
+    public AttractAction(AbstractCreature leftM, AbstractMonster rightM) {
         if (m1 instanceof AbstractMonster) {
-            this.m1 = (AbstractMonster)m1;
+            m1 = (AbstractMonster)leftM;
         }
-        this.m2 = m2;
-        this.duration = Settings.ACTION_DUR_FASTER;
+        m2 = rightM;
+        duration = Settings.ACTION_DUR_FASTER;
     }
 
     @Override
     public void update() {
-        if (this.duration == Settings.ACTION_DUR_FASTER) {
+        if (duration == Settings.ACTION_DUR_FASTER) {
             AbstractMonster positiveM;
             AbstractMonster negativeM;
             if (m1.hasPower(PositivelyChargedPower.POWER_ID)) {

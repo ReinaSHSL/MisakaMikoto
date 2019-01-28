@@ -31,7 +31,7 @@ public class ArcadeToken extends AbstractMisakaRelic {
         if(counter < 0) {
             counter = 0;
         }
-        this.counter++;
+        counter++;
         if (counter >= co) {
             act(new RelicAboveCreatureAction(AbstractDungeon.player, this));
             act(new DamageAllEnemiesAction(null, DamageInfo.createDamageMatrix(d, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HEAVY));

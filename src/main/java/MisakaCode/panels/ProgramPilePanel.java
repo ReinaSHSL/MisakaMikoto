@@ -61,29 +61,29 @@ public class ProgramPilePanel extends AbstractPanel {
 
     public void updatePositions() {
         super.updatePositions();
-        this.bob.update();
+        bob.update();
         updateVfx();
 
-        if (!this.isHidden) {
-            this.hb.update();
-            this.bannerHb.update();
+        if (!isHidden) {
+            hb.update();
+            bannerHb.update();
             updatePop();
         }
 
 
-        if ((this.hb.hovered) && ((!AbstractDungeon.isScreenUp) || (AbstractDungeon.screen == ProgramCardsPatch.PROGRAM_VIEW) || (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.HAND_SELECT))) {
+        if ((hb.hovered) && ((!AbstractDungeon.isScreenUp) || (AbstractDungeon.screen == ProgramCardsPatch.PROGRAM_VIEW) || (AbstractDungeon.screen == AbstractDungeon.CurrentScreen.HAND_SELECT))) {
             AbstractDungeon.overlayMenu.hoveredTip = true;
             if (com.megacrit.cardcrawl.helpers.input.InputHelper.justClickedLeft) {
-                this.hb.clickStarted = true;
+                hb.clickStarted = true;
             }
         }
 
 
-        if (this.hb.clicked && AbstractDungeon.screen == ProgramCardsPatch.PROGRAM_VIEW) {
+        if (hb.clicked && AbstractDungeon.screen == ProgramCardsPatch.PROGRAM_VIEW) {
 
-            this.hb.clicked = false;
-            this.hb.hovered = false;
-            this.bannerHb.hovered = false;
+            hb.clicked = false;
+            hb.hovered = false;
+            bannerHb.hovered = false;
             CardCrawlGame.sound.play("DECK_CLOSE");
             if (AbstractDungeon.previousScreen == ProgramCardsPatch.PROGRAM_VIEW) {
                 AbstractDungeon.previousScreen = null;
@@ -93,24 +93,24 @@ public class ProgramPilePanel extends AbstractPanel {
         }
 
 
-        this.glowAlpha += Gdx.graphics.getDeltaTime() * 3.0F;
-        if (this.glowAlpha < 0.0F) {
-            this.glowAlpha *= -1.0F;
+        glowAlpha += Gdx.graphics.getDeltaTime() * 3.0F;
+        if (glowAlpha < 0.0F) {
+            glowAlpha *= -1.0F;
         }
-        float tmp = MathUtils.cos(this.glowAlpha);
+        float tmp = MathUtils.cos(glowAlpha);
         if (tmp < 0.0F) {
-            this.glowColor.a = (-tmp / 2.0F);
+            glowColor.a = (-tmp / 2.0F);
         } else {
-            this.glowColor.a = (tmp / 2.0F);
+            glowColor.a = (tmp / 2.0F);
         }
 
 
-        if (this.hb.clicked && (AbstractDungeon.overlayMenu.combatPanelsShown) &&
+        if (hb.clicked && (AbstractDungeon.overlayMenu.combatPanelsShown) &&
                 (AbstractDungeon.getMonsters() != null) &&
                 (!AbstractDungeon.getMonsters().areMonstersDead()) && (!AbstractDungeon.player.isDead)) {
-            this.hb.clicked = false;
-            this.hb.hovered = false;
-            this.bannerHb.hovered = false;
+            hb.clicked = false;
+            hb.hovered = false;
+            bannerHb.hovered = false;
 
             if (AbstractDungeon.isScreenUp) {
                 if (AbstractDungeon.previousScreen == null) {
@@ -133,7 +133,7 @@ public class ProgramPilePanel extends AbstractPanel {
             AbstractDungeon.effectList.add(new ThoughtBubble(p.dialogX, p.dialogY, 3.0F, TEXT[0], true));
         }
 
-        this.hb.hovered = false;
+        hb.hovered = false;
         InputHelper.justClickedLeft = false;
     }
 
@@ -145,25 +145,25 @@ public class ProgramPilePanel extends AbstractPanel {
         for (DiscardGlowEffect i : vfxBelow) {
             i.update();
         }
-        if ((this.vfxAbove.size() < 9) && (!Settings.DISABLE_EFFECTS)) {
-            this.vfxAbove.add(new DiscardGlowEffect(true));
+        if ((vfxAbove.size() < 9) && (!Settings.DISABLE_EFFECTS)) {
+            vfxAbove.add(new DiscardGlowEffect(true));
         }
-        if ((this.vfxBelow.size() < 9) && (!Settings.DISABLE_EFFECTS)) {
-            this.vfxBelow.add(new DiscardGlowEffect(false));
+        if ((vfxBelow.size() < 9) && (!Settings.DISABLE_EFFECTS)) {
+            vfxBelow.add(new DiscardGlowEffect(false));
         }
     }
 
     private void updatePop() {
-        if (this.scale != 1.0F) {
-            this.scale = MathUtils.lerp(this.scale, 1.0F, Gdx.graphics.getDeltaTime() * 8.0F);
-            if (Math.abs(this.scale - 1.0F) < 0.003F) {
-                this.scale = 1.0F;
+        if (scale != 1.0F) {
+            scale = MathUtils.lerp(scale, 1.0F, Gdx.graphics.getDeltaTime() * 8.0F);
+            if (Math.abs(scale - 1.0F) < 0.003F) {
+                scale = 1.0F;
             }
         }
     }
 
     public void pop() {
-        this.scale = Settings.POP_AMOUNT;
+        scale = Settings.POP_AMOUNT;
     }
 
     public void render(SpriteBatch sb) {
@@ -172,36 +172,36 @@ public class ProgramPilePanel extends AbstractPanel {
 
 
             String msg = Integer.toString(ProgramCardsPatch.ProgramPileField.programPile.get(AbstractDungeon.player).size());
-            this.gl.setText(FontHelper.deckCountFont, msg);
+            gl.setText(FontHelper.deckCountFont, msg);
             sb.setColor(Color.WHITE);
-            sb.draw(ImageMaster.DECK_COUNT_CIRCLE, this.current_x + COUNT_OFFSET_X, this.current_y + COUNT_OFFSET_Y, COUNT_CIRCLE_W, COUNT_CIRCLE_W);
+            sb.draw(ImageMaster.DECK_COUNT_CIRCLE, current_x + COUNT_OFFSET_X, current_y + COUNT_OFFSET_Y, COUNT_CIRCLE_W, COUNT_CIRCLE_W);
 
-            FontHelper.renderFontCentered(sb, FontHelper.deckCountFont, msg, this.current_x + COUNT_X, this.current_y + COUNT_Y);
+            FontHelper.renderFontCentered(sb, FontHelper.deckCountFont, msg, current_x + COUNT_X, current_y + COUNT_Y);
 
-            if (!this.isHidden) {
-                this.hb.render(sb);
+            if (!isHidden) {
+                hb.render(sb);
                 if (AbstractDungeon.screen == ProgramCardsPatch.PROGRAM_VIEW) {
-                    this.bannerHb.render(sb);
+                    bannerHb.render(sb);
                 }
             }
         }
     }
 
     private void renderButton(SpriteBatch sb) {
-        if ((this.hb.hovered) || ((this.bannerHb.hovered) && (AbstractDungeon.screen == ProgramCardsPatch.PROGRAM_VIEW))) {
-            this.scale = 1.2F;
+        if ((hb.hovered) || ((bannerHb.hovered) && (AbstractDungeon.screen == ProgramCardsPatch.PROGRAM_VIEW))) {
+            scale = 1.2F;
         }
 
-        for (DiscardGlowEffect e : this.vfxBelow) {
-            e.render(sb, this.current_x - 1664.0F * Settings.scale, this.current_y + this.bob.y * 0.5F);
+        for (DiscardGlowEffect e : vfxBelow) {
+            e.render(sb, current_x - 1664.0F * Settings.scale, current_y + bob.y * 0.5F);
         }
 
         sb.setColor(Color.WHITE);
-        sb.draw(ImageMaster.DISCARD_BTN_BASE, this.current_x + DECK_X, this.current_y + DECK_Y + this.bob.y / 2.0F, 64.0F, 64.0F, 128.0F, 128.0F, this.scale * Settings.scale, this.scale * Settings.scale, 0.0F, 0, 0, 128, 128, false, false);
+        sb.draw(ImageMaster.DISCARD_BTN_BASE, current_x + DECK_X, current_y + DECK_Y + bob.y / 2.0F, 64.0F, 64.0F, 128.0F, 128.0F, scale * Settings.scale, scale * Settings.scale, 0.0F, 0, 0, 128, 128, false, false);
 
 
-        for (DiscardGlowEffect e : this.vfxAbove) {
-            e.render(sb, this.current_x - 1664.0F * Settings.scale, this.current_y + this.bob.y * 0.5F);
+        for (DiscardGlowEffect e : vfxAbove) {
+            e.render(sb, current_x - 1664.0F * Settings.scale, current_y + bob.y * 0.5F);
         }
     }
 }

@@ -35,8 +35,8 @@ public class ProgramPileViewScreen implements ScrollBarListener {
     private boolean grabbedScreen = false;
     private float scrollLowerBound = -Settings.DEFAULT_SCROLL_LIMIT;
     private float scrollUpperBound = Settings.DEFAULT_SCROLL_LIMIT;
-    private float grabStartY = this.scrollLowerBound;
-    private float currentDiffY = this.scrollLowerBound;
+    private float grabStartY = scrollLowerBound;
+    private float currentDiffY = scrollLowerBound;
     private AbstractCard hoveredCard = null;
     private int prevDeckSize = 0;
     private ScrollBar scrollBar;
@@ -51,31 +51,31 @@ public class ProgramPileViewScreen implements ScrollBarListener {
 
         padX = AbstractCard.IMG_WIDTH * 0.75F + Settings.CARD_VIEW_PAD_X;
         padY = AbstractCard.IMG_HEIGHT * 0.75F + Settings.CARD_VIEW_PAD_Y;
-        this.scrollBar = new ScrollBar(this);
-        this.scrollBar.move(0.0F, -30.0F * Settings.scale);
+        scrollBar = new ScrollBar(this);
+        scrollBar.move(0.0F, -30.0F * Settings.scale);
     }
 
     public void update() {
         boolean isDraggingScrollBar = false;
         if (shouldShowScrollBar()) {
-            isDraggingScrollBar = this.scrollBar.update();
+            isDraggingScrollBar = scrollBar.update();
         }
         if (!isDraggingScrollBar) {
             updateScrolling();
         }
         updateControllerInput();
-        if ((Settings.isControllerMode) && (this.controllerCard != null) && (!CardCrawlGame.isPopupOpen) && (!AbstractDungeon.topPanel.selectPotionMode)) {
+        if ((Settings.isControllerMode) && (controllerCard != null) && (!CardCrawlGame.isPopupOpen) && (!AbstractDungeon.topPanel.selectPotionMode)) {
             if (Gdx.input.getY() > Settings.HEIGHT * 0.7F) {
-                this.currentDiffY += Settings.SCROLL_SPEED;
+                currentDiffY += Settings.SCROLL_SPEED;
             } else if (Gdx.input.getY() < Settings.HEIGHT * 0.3F) {
-                this.currentDiffY -= Settings.SCROLL_SPEED;
+                currentDiffY -= Settings.SCROLL_SPEED;
             }
         }
 
         updatePositions();
 
-        if ((Settings.isControllerMode) && (this.controllerCard != null)) {
-            Gdx.input.setCursorPosition((int) this.controllerCard.hb.cX, (int) (Settings.HEIGHT - this.controllerCard.hb.cY));
+        if ((Settings.isControllerMode) && (controllerCard != null)) {
+            Gdx.input.setCursorPosition((int) controllerCard.hb.cX, (int) (Settings.HEIGHT - controllerCard.hb.cY));
         }
     }
 
@@ -87,7 +87,7 @@ public class ProgramPileViewScreen implements ScrollBarListener {
         boolean anyHovered = false;
         int index = 0;
 
-        for (AbstractCard c : this.programPileCopy.group) {
+        for (AbstractCard c : programPileCopy.group) {
             if (c.hb.hovered) {
                 anyHovered = true;
                 break;
@@ -97,52 +97,52 @@ public class ProgramPileViewScreen implements ScrollBarListener {
 
         if (!anyHovered) {
             Gdx.input.setCursorPosition(
-                    (int) this.programPileCopy.group.get(0).hb.cX, Settings.HEIGHT -
-                            (int) this.programPileCopy.group.get(0).hb.cY);
-            this.controllerCard = this.programPileCopy.group.get(0);
+                    (int) programPileCopy.group.get(0).hb.cX, Settings.HEIGHT -
+                            (int) programPileCopy.group.get(0).hb.cY);
+            controllerCard = programPileCopy.group.get(0);
         } else if (((CInputActionSet.up.isJustPressed()) || (CInputActionSet.altUp.isJustPressed())) &&
-                (this.programPileCopy.size() > 5)) {
+                (programPileCopy.size() > 5)) {
             index -= 5;
             if (index < 0) {
-                int wrap = this.programPileCopy.size() / 5;
+                int wrap = programPileCopy.size() / 5;
                 index += wrap * 5;
-                if (index + 5 < this.programPileCopy.size()) {
+                if (index + 5 < programPileCopy.size()) {
                     index += 5;
                 }
             }
             Gdx.input.setCursorPosition(
-                    (int) this.programPileCopy.group.get(index).hb.cX, Settings.HEIGHT -
-                            (int) this.programPileCopy.group.get(index).hb.cY);
-            this.controllerCard = this.programPileCopy.group.get(index);
+                    (int) programPileCopy.group.get(index).hb.cX, Settings.HEIGHT -
+                            (int) programPileCopy.group.get(index).hb.cY);
+            controllerCard = programPileCopy.group.get(index);
         } else if (((CInputActionSet.down.isJustPressed()) || (CInputActionSet.altDown.isJustPressed())) &&
-                (this.programPileCopy.size() > 5)) {
-            if (index < this.programPileCopy.size() - 5) {
+                (programPileCopy.size() > 5)) {
+            if (index < programPileCopy.size() - 5) {
                 index += 5;
             } else {
                 index %= 5;
             }
             Gdx.input.setCursorPosition(
-                    (int) this.programPileCopy.group.get(index).hb.cX, Settings.HEIGHT -
-                            (int) this.programPileCopy.group.get(index).hb.cY);
-            this.controllerCard = this.programPileCopy.group.get(index);
+                    (int) programPileCopy.group.get(index).hb.cX, Settings.HEIGHT -
+                            (int) programPileCopy.group.get(index).hb.cY);
+            controllerCard = programPileCopy.group.get(index);
         } else if ((CInputActionSet.left.isJustPressed()) || (CInputActionSet.altLeft.isJustPressed())) {
             if (index % 5 > 0) {
                 index--;
             } else {
                 index += 4;
-                if (index > this.programPileCopy.size() - 1) {
-                    index = this.programPileCopy.size() - 1;
+                if (index > programPileCopy.size() - 1) {
+                    index = programPileCopy.size() - 1;
                 }
             }
             Gdx.input.setCursorPosition(
-                    (int) this.programPileCopy.group.get(index).hb.cX, Settings.HEIGHT -
-                            (int) this.programPileCopy.group.get(index).hb.cY);
-            this.controllerCard = this.programPileCopy.group.get(index);
+                    (int) programPileCopy.group.get(index).hb.cX, Settings.HEIGHT -
+                            (int) programPileCopy.group.get(index).hb.cY);
+            controllerCard = programPileCopy.group.get(index);
         } else if ((CInputActionSet.right.isJustPressed()) || (CInputActionSet.altRight.isJustPressed())) {
             if (index % 5 < 4) {
                 index++;
-                if (index > this.programPileCopy.size() - 1) {
-                    index -= this.programPileCopy.size() % 5;
+                if (index > programPileCopy.size() - 1) {
+                    index -= programPileCopy.size() % 5;
                 }
             } else {
                 index -= 4;
@@ -151,34 +151,34 @@ public class ProgramPileViewScreen implements ScrollBarListener {
                 }
             }
             Gdx.input.setCursorPosition(
-                    (int) this.programPileCopy.group.get(index).hb.cX, Settings.HEIGHT -
-                            (int) this.programPileCopy.group.get(index).hb.cY);
-            this.controllerCard = this.programPileCopy.group.get(index);
+                    (int) programPileCopy.group.get(index).hb.cX, Settings.HEIGHT -
+                            (int) programPileCopy.group.get(index).hb.cY);
+            controllerCard = programPileCopy.group.get(index);
         }
     }
 
     private void updateScrolling() {
         int y = InputHelper.mY;
 
-        if (!this.grabbedScreen) {
+        if (!grabbedScreen) {
             if (InputHelper.scrolledDown) {
-                this.currentDiffY += Settings.SCROLL_SPEED;
+                currentDiffY += Settings.SCROLL_SPEED;
             } else if (InputHelper.scrolledUp) {
-                this.currentDiffY -= Settings.SCROLL_SPEED;
+                currentDiffY -= Settings.SCROLL_SPEED;
             }
 
             if (InputHelper.justClickedLeft) {
-                this.grabbedScreen = true;
-                this.grabStartY = (y - this.currentDiffY);
+                grabbedScreen = true;
+                grabStartY = (y - currentDiffY);
             }
         } else if (InputHelper.isMouseDown) {
-            this.currentDiffY = (y - this.grabStartY);
+            currentDiffY = (y - grabStartY);
         } else {
-            this.grabbedScreen = false;
+            grabbedScreen = false;
         }
 
 
-        if (this.prevDeckSize != this.programPileCopy.size()) {
+        if (prevDeckSize != programPileCopy.size()) {
             calculateScrollBounds();
         }
         resetScrolling();
@@ -187,45 +187,45 @@ public class ProgramPileViewScreen implements ScrollBarListener {
 
 
     private void calculateScrollBounds() {
-        if (this.programPileCopy.size() > 10) {
-            int scrollTmp = this.programPileCopy.size() / 5 - 2;
-            if (this.programPileCopy.size() % 5 != 0) {
+        if (programPileCopy.size() > 10) {
+            int scrollTmp = programPileCopy.size() / 5 - 2;
+            if (programPileCopy.size() % 5 != 0) {
                 scrollTmp++;
             }
-            this.scrollUpperBound = (Settings.DEFAULT_SCROLL_LIMIT + scrollTmp * padY);
+            scrollUpperBound = (Settings.DEFAULT_SCROLL_LIMIT + scrollTmp * padY);
         } else {
-            this.scrollUpperBound = Settings.DEFAULT_SCROLL_LIMIT;
+            scrollUpperBound = Settings.DEFAULT_SCROLL_LIMIT;
         }
 
-        this.prevDeckSize = this.programPileCopy.size();
+        prevDeckSize = programPileCopy.size();
     }
 
 
     private void resetScrolling() {
-        if (this.currentDiffY < this.scrollLowerBound) {
-            this.currentDiffY = MathHelper.scrollSnapLerpSpeed(this.currentDiffY, this.scrollLowerBound);
-        } else if (this.currentDiffY > this.scrollUpperBound) {
-            this.currentDiffY = MathHelper.scrollSnapLerpSpeed(this.currentDiffY, this.scrollUpperBound);
+        if (currentDiffY < scrollLowerBound) {
+            currentDiffY = MathHelper.scrollSnapLerpSpeed(currentDiffY, scrollLowerBound);
+        } else if (currentDiffY > scrollUpperBound) {
+            currentDiffY = MathHelper.scrollSnapLerpSpeed(currentDiffY, scrollUpperBound);
         }
     }
 
 
     private void updatePositions() {
-        this.hoveredCard = null;
+        hoveredCard = null;
         int lineNum = 0;
-        ArrayList<AbstractCard> cards = this.programPileCopy.group;
+        ArrayList<AbstractCard> cards = programPileCopy.group;
         for (int i = 0; i < cards.size(); i++) {
             int mod = i % 5;
             if ((mod == 0) && (i != 0)) {
                 lineNum++;
             }
             cards.get(i).target_x = (drawStartX + mod * padX);
-            cards.get(i).target_y = (drawStartY + this.currentDiffY - lineNum * padY);
+            cards.get(i).target_y = (drawStartY + currentDiffY - lineNum * padY);
             cards.get(i).update();
             cards.get(i).updateHoverLogic();
 
             if (cards.get(i).hb.hovered) {
-                this.hoveredCard = cards.get(i);
+                hoveredCard = cards.get(i);
             }
         }
     }
@@ -233,7 +233,7 @@ public class ProgramPileViewScreen implements ScrollBarListener {
     public void reopen() {
         if (Settings.isControllerMode) {
             Gdx.input.setCursorPosition(10, Settings.HEIGHT / 2);
-            this.controllerCard = null;
+            controllerCard = null;
         }
         AbstractDungeon.overlayMenu.cancelButton.show(TEXT[2]);
     }
@@ -241,17 +241,17 @@ public class ProgramPileViewScreen implements ScrollBarListener {
     public void open() {
         if (Settings.isControllerMode) {
             Gdx.input.setCursorPosition(10, Settings.HEIGHT / 2);
-            this.controllerCard = null;
+            controllerCard = null;
         }
         CardCrawlGame.sound.play("DECK_OPEN");
         AbstractDungeon.overlayMenu.showBlackScreen();
         AbstractDungeon.overlayMenu.cancelButton.show(TEXT[2]);
-        this.currentDiffY = this.scrollLowerBound;
-        this.grabStartY = this.scrollLowerBound;
-        this.grabbedScreen = false;
+        currentDiffY = scrollLowerBound;
+        grabStartY = scrollLowerBound;
+        grabbedScreen = false;
         AbstractDungeon.isScreenUp = true;
         AbstractDungeon.screen = AbstractDungeon.CurrentScreen.GAME_DECK_VIEW;
-        this.programPileCopy.clear();
+        programPileCopy.clear();
 
         for (AbstractCard c : ProgramCardsPatch.ProgramPileField.programPile.get(AbstractDungeon.player).group) {
             c.setAngle(0.0F, true);
@@ -260,11 +260,11 @@ public class ProgramPileViewScreen implements ScrollBarListener {
             c.drawScale = 0.75F;
 
             c.lighten(true);
-            this.programPileCopy.addToBottom(c);
+            programPileCopy.addToBottom(c);
         }
         hideCards();
 
-        if (this.programPileCopy.group.size() <= 5) {
+        if (programPileCopy.group.size() <= 5) {
             drawStartY = Settings.HEIGHT * 0.5F;
         } else {
             drawStartY = Settings.HEIGHT * 0.66F;
@@ -275,14 +275,14 @@ public class ProgramPileViewScreen implements ScrollBarListener {
 
     private void hideCards() {
         int lineNum = 0;
-        ArrayList<AbstractCard> cards = this.programPileCopy.group;
+        ArrayList<AbstractCard> cards = programPileCopy.group;
         for (int i = 0; i < cards.size(); i++) {
             int mod = i % 5;
             if ((mod == 0) && (i != 0)) {
                 lineNum++;
             }
             cards.get(i).current_x = (drawStartX + mod * padX);
-            cards.get(i).current_y = (drawStartY + this.currentDiffY - lineNum * padY - com.badlogic.gdx.math.MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale));
+            cards.get(i).current_y = (drawStartY + currentDiffY - lineNum * padY - com.badlogic.gdx.math.MathUtils.random(100.0F * Settings.scale, 200.0F * Settings.scale));
 
 
             cards.get(i).targetDrawScale = 0.75F;
@@ -291,13 +291,13 @@ public class ProgramPileViewScreen implements ScrollBarListener {
     }
 
     public void render(SpriteBatch sb) {
-        if (this.hoveredCard == null) {
-            this.programPileCopy.render(sb);
+        if (hoveredCard == null) {
+            programPileCopy.render(sb);
         } else {
-            this.programPileCopy.renderExceptOneCard(sb, this.hoveredCard);
-            this.hoveredCard.renderHoverShadow(sb);
-            this.hoveredCard.render(sb);
-            this.hoveredCard.renderCardTip(sb);
+            programPileCopy.renderExceptOneCard(sb, hoveredCard);
+            hoveredCard.renderHoverShadow(sb);
+            hoveredCard.render(sb);
+            hoveredCard.renderCardTip(sb);
         }
 
         sb.setColor(Color.WHITE);
@@ -309,21 +309,21 @@ public class ProgramPileViewScreen implements ScrollBarListener {
         AbstractDungeon.overlayMenu.combatDeckPanel.render(sb);
 
         if (shouldShowScrollBar()) {
-            this.scrollBar.render(sb);
+            scrollBar.render(sb);
         }
     }
 
     public void scrolledUsingBar(float newPercent) {
-        this.currentDiffY = MathHelper.valueFromPercentBetween(this.scrollLowerBound, this.scrollUpperBound, newPercent);
+        currentDiffY = MathHelper.valueFromPercentBetween(scrollLowerBound, scrollUpperBound, newPercent);
         updateBarPosition();
     }
 
     private void updateBarPosition() {
-        float percent = MathHelper.percentFromValueBetween(this.scrollLowerBound, this.scrollUpperBound, this.currentDiffY);
-        this.scrollBar.parentScrolledToPercent(percent);
+        float percent = MathHelper.percentFromValueBetween(scrollLowerBound, scrollUpperBound, currentDiffY);
+        scrollBar.parentScrolledToPercent(percent);
     }
 
     private boolean shouldShowScrollBar() {
-        return this.scrollUpperBound > SCROLL_BAR_THRESHOLD;
+        return scrollUpperBound > SCROLL_BAR_THRESHOLD;
     }
 }
