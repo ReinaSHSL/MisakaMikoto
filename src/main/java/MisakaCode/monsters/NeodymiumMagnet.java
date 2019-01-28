@@ -10,12 +10,12 @@ public class NeodymiumMagnet extends AbstractMisakaMonster {
     private static final MonsterStrings monsterStrings = CardCrawlGame.languagePack.getMonsterStrings(ID);
     private static final String NAME = monsterStrings.NAME;
     private static final int MAX_HP = 5;
-    private static final float HB_X = -2.0F;
+    private static final float HB_X = 0.0F;
     private static final float HB_Y = 10.0F;
-    private static final float HB_W = 230.0F;
-    private static final float HB_H = 240.0F;
+    private static final float HB_W = 160.0F;
+    private static final float HB_H = 180.0F;
     private static final String IMG = "MisakaResources/images/monsters/NeodymiumMagnet.png";
-    private static final int DAMAGE = 3;
+    private static final int DAMAGE = 5;
 
     public NeodymiumMagnet(float offsetX) {
         super(NAME, ID, MAX_HP, HB_X, HB_Y, HB_W, HB_H, IMG, offsetX, 0);
