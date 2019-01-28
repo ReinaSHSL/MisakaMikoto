@@ -13,10 +13,7 @@ import MisakaCode.tools.CardNoSeen;
 import MisakaCode.tools.RelicFilter;
 import basemod.BaseMod;
 import basemod.helpers.RelicType;
-import basemod.interfaces.EditCardsSubscriber;
-import basemod.interfaces.EditCharactersSubscriber;
-import basemod.interfaces.EditRelicsSubscriber;
-import basemod.interfaces.EditStringsSubscriber;
+import basemod.interfaces.*;
 import com.badlogic.gdx.graphics.Color;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -44,7 +41,8 @@ public class MisakaModInitializer implements
         EditStringsSubscriber,
         EditCharactersSubscriber,
         EditCardsSubscriber,
-        EditRelicsSubscriber {
+        EditRelicsSubscriber,
+        PostInitializeSubscriber {
 
     public static final Color MAGNETIC = CardHelper.getColor(255.0f, 255.0f, 255.0f);
     private static final String ATTACK_MAGNETIC = "MisakaResources/images/512/attack_silver.png";
@@ -57,7 +55,7 @@ public class MisakaModInitializer implements
     private static final String POWER_MAGNETIC_1024 = "MisakaResources/images/1024/power_silver.png";
     private static final String ENERGY_ORB_GREY_1024 = "MisakaResources/images/1024/energy_orb_magnetic.png";
 
-    public static ProgramPileViewScreen programView = new ProgramPileViewScreen();
+    public static ProgramPileViewScreen programView;
 
     public MisakaModInitializer() {
         BaseMod.subscribe(this);
@@ -79,7 +77,7 @@ public class MisakaModInitializer implements
                 BaseMod.loadCustomStringsFile(PowerStrings.class, "MisakaResources/localization/MisakaPowerStrings.json");
                 BaseMod.loadCustomStringsFile(CardStrings.class, "MisakaResources/localization/MisakaCardStrings.json");
                 BaseMod.loadCustomStringsFile(UIStrings.class, "MisakaResources/localization/MisakaUIStrings.json");
-                BaseMod.loadCustomStrings(CharacterStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
+                BaseMod.loadCustomStringsFile(CharacterStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
         }
     }
 
@@ -93,7 +91,7 @@ public class MisakaModInitializer implements
     @Override
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new MisakaDynamicVariable());
-        
+
         try {
             autoAddCards();
         } catch (URISyntaxException | IllegalAccessException | InstantiationException | NotFoundException | CannotCompileException e) {
@@ -217,4 +215,8 @@ public class MisakaModInitializer implements
         }
     }
 
+    @Override
+    public void receivePostInitialize() {
+        programView = new ProgramPileViewScreen();
+    }
 }
