@@ -1,0 +1,22 @@
+{
+  "misaka:MomentumPower": {
+    "NAME": "Momentum",
+    "DESCRIPTIONS": [
+      "After playing #b",
+      " more cards this turn, gain #b",
+      " [E] ."
+    ]
+  },
+  "misaka:PasitivelyChargedPower": {
+    "NAME": "Positive",
+    "DESCRIPTIONS": [
+      "This monster is attracted to - Charges and repelled to + Charges."
+    ]
+  },
+  "misaka:NegativelyChargedPower": {
+    "NAME": "Negative",
+    "DESCRIPTIONS": [
+      "This monster is attracted to + Charges and repelled to - Charges."
+    ]
+  }
+}
