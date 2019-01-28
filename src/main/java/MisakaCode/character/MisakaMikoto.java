@@ -10,6 +10,7 @@ import MisakaCode.cards.Thunderjolt;
 import MisakaCode.monsters.NeodymiumMagnet;
 import MisakaCode.patches.AbstractCardEnum;
 import MisakaCode.patches.MisakaMikotoEnum;
+import MisakaCode.relics.ArcadeToken;
 import com.megacrit.cardcrawl.cards.blue.Strike_Blue;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import org.apache.logging.log4j.LogManager;
@@ -75,6 +76,7 @@ public class MisakaMikoto extends CustomPlayer {
 
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> starterRelics = new ArrayList<>();
+        starterRelics.add(ArcadeToken.ID);
         return starterRelics;
     }
 
