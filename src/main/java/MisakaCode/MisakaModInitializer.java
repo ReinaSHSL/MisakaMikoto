@@ -45,6 +45,7 @@ public class MisakaModInitializer implements
         EditCharactersSubscriber,
         EditCardsSubscriber,
         EditRelicsSubscriber {
+
     public static final Color MAGNETIC = CardHelper.getColor(255.0f, 255.0f, 255.0f);
     private static final String ATTACK_MAGNETIC = "MisakaResources/images/512/attack_silver.png";
     private static final String SKILL_MAGNETIC = "MisakaResources/images/512/skill_silver.png";
@@ -55,8 +56,6 @@ public class MisakaModInitializer implements
     private static final String SKILL_MAGNETIC_1024 = "MisakaResources/images/1024/skill_silver.png";
     private static final String POWER_MAGNETIC_1024 = "MisakaResources/images/1024/power_silver.png";
     private static final String ENERGY_ORB_GREY_1024 = "MisakaResources/images/1024/energy_orb_magnetic.png";
-
-    private static CharacterStrings characterStrings = CardCrawlGame.languagePack.getCharacterString("MisakaMikoto");
 
     public static ProgramPileViewScreen programView = new ProgramPileViewScreen();
 
@@ -86,7 +85,7 @@ public class MisakaModInitializer implements
 
     @Override
     public void receiveEditCharacters() {
-        BaseMod.addCharacter(new MisakaMikoto(characterStrings.NAMES[0]),
+        BaseMod.addCharacter(new MisakaMikoto(CardCrawlGame.languagePack.getCharacterString("MisakaMikoto").NAMES[0]),
                 "MisakaResources/images/character/button.png", "MisakaResources/images/character/portrait.png",
                 MisakaMikotoEnum.THE_RAILGUN);
     }
@@ -94,6 +93,7 @@ public class MisakaModInitializer implements
     @Override
     public void receiveEditCards() {
         BaseMod.addDynamicVariable(new MisakaDynamicVariable());
+        
         try {
             autoAddCards();
         } catch (URISyntaxException | IllegalAccessException | InstantiationException | NotFoundException | CannotCompileException e) {
