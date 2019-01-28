@@ -15,6 +15,7 @@ public class ArcadeToken extends AbstractMisakaRelic {
     public static final String ID = "misaka:ArcadeToken";
     private static final Texture IMG = TextureLoader.getTexture("MisakaResources/resources/relics/ArcadeToken.png");
     private static final int d = 5;
+    private static final int co = 8;
 
     public ArcadeToken() {
         super(ID, IMG, RelicTier.STARTER, LandingSound.CLINK);
@@ -22,16 +23,16 @@ public class ArcadeToken extends AbstractMisakaRelic {
 
     @Override
     public String getUpdatedDescription() {
-        return DESCRIPTIONS[0] + d + DESCRIPTIONS[1];
+        return DESCRIPTIONS[0] + co + DESCRIPTIONS[1] + d + DESCRIPTIONS[2];
     }
 
     @Override
     public void onUseCard(AbstractCard c, UseCardAction a) {
-        if(this.counter < 0) {
-            this.counter = 0;
+        if(counter < 0) {
+            counter = 0;
         }
         this.counter++;
-        if (this.counter >= 8) {
+        if (counter >= co) {
             act(new RelicAboveCreatureAction(AbstractDungeon.player, this));
             act(new DamageAllEnemiesAction(null, DamageInfo.createDamageMatrix(d, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_HEAVY));
         }

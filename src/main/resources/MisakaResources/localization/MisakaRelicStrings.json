@@ -1,0 +1,10 @@
+{
+  "misaka:ArcadeToken": {
+    "NAME": "Arcade Token",
+    "DESCRIPTIONS": [
+      "Every #b",
+      " cards played, deal #b",
+      " damage to ALL enemies."
+    ]
+  }
+}

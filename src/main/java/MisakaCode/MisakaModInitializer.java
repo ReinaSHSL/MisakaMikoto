@@ -72,7 +72,7 @@ public class MisakaModInitializer implements
     public void receiveEditStrings() {
         switch (Settings.language) {
             default:
-                BaseMod.loadCustomStringsFile(RelicStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
+                BaseMod.loadCustomStringsFile(RelicStrings.class, "MisakaResources/localization/MisakaRelicStrings.json");
                 BaseMod.loadCustomStringsFile(PowerStrings.class, "MisakaResources/localization/MisakaPowerStrings.json");
                 BaseMod.loadCustomStringsFile(CardStrings.class, "MisakaResources/localization/MisakaCardStrings.json");
                 BaseMod.loadCustomStringsFile(UIStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
