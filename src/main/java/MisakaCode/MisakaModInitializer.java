@@ -68,6 +68,10 @@ public class MisakaModInitializer implements
                 ATTACK_MAGNETIC_1024, SKILL_MAGNETIC_1024, POWER_MAGNETIC_1024,
                 ENERGY_ORB_GREY_1024);}
 
+    public static void initialize() {
+        MisakaModInitializer mod = new MisakaModInitializer();
+    }
+
     @Override
     public void receiveEditStrings() {
         switch (Settings.language) {
@@ -80,12 +84,12 @@ public class MisakaModInitializer implements
         }
     }
 
-        @Override
-        public void receiveEditCharacters() {
-            BaseMod.addCharacter(new MisakaMikoto(characterStrings.NAMES[0]),
-                    "MisakaResources/images/character/button.png", "MisakaResources/images/character/portrait.png",
-                    MisakaMikotoEnum.THE_RAILGUN);
-        }
+    @Override
+    public void receiveEditCharacters() {
+        BaseMod.addCharacter(new MisakaMikoto(characterStrings.NAMES[0]),
+                "MisakaResources/images/character/button.png", "MisakaResources/images/character/portrait.png",
+                MisakaMikotoEnum.THE_RAILGUN);
+    }
 
     @Override
     public void receiveEditCards() {
