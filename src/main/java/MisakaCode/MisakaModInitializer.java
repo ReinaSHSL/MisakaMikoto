@@ -78,6 +78,7 @@ public class MisakaModInitializer implements
                 BaseMod.loadCustomStringsFile(CardStrings.class, "MisakaResources/localization/MisakaCardStrings.json");
                 BaseMod.loadCustomStringsFile(UIStrings.class, "MisakaResources/localization/MisakaUIStrings.json");
                 BaseMod.loadCustomStringsFile(CharacterStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
+                BaseMod.loadCustomStringsFile(TutorialStrings.class, "MisakaResources/localization/MisakaTutorialStrings.json");
         }
     }
 
@@ -200,7 +201,6 @@ public class MisakaModInitializer implements
                 continue;
             }
             System.out.println(classInfo.getClassName());
-            // Different
             AbstractMisakaRelic relic = (AbstractMisakaRelic) Loader.getClassPool().getClassLoader().loadClass(cls.getName()).newInstance();
             if (relic.color == null) {
                 BaseMod.addRelic(relic, RelicType.SHARED);
