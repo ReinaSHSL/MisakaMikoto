@@ -26,9 +26,9 @@ public class Momentum extends AbstractMisakaCard {
 
     public Momentum() {
         super(ID, NAME, IMG, COST, DESC, TYPE, COLOR, RARITY, TARGET);
-        buildDescription();
         magicNumber = baseMagicNumber = m;
         misakaMagicNumber = baseMisakaMagicNumber = mn;
+        buildDescription();
     }
 
     @Override
@@ -46,9 +46,8 @@ public class Momentum extends AbstractMisakaCard {
     }
 
     private void buildDescription() {
-        StringBuilder sbuf = new StringBuilder();
-        sbuf.append(cardStrings.EXTENDED_DESCRIPTION[0]);
-        for (int i = 0; i < magicNumber; i++) {
+        StringBuilder sbuf = new StringBuilder(cardStrings.EXTENDED_DESCRIPTION[0]);
+        for (int i = 0; i < misakaMagicNumber; i++) {
             sbuf.append("[E] ");
         }
         sbuf.append(cardStrings.EXTENDED_DESCRIPTION[1]);

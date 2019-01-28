@@ -74,7 +74,7 @@ public class MisakaModInitializer implements
             default:
                 BaseMod.loadCustomStringsFile(RelicStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
                 BaseMod.loadCustomStringsFile(PowerStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
-                BaseMod.loadCustomStringsFile(CardStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
+                BaseMod.loadCustomStringsFile(CardStrings.class, "MisakaResources/localization/MisakaCardStrings.json");
                 BaseMod.loadCustomStringsFile(UIStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
                 BaseMod.loadCustomStrings(CharacterStrings.class, "MisakaResources/localization/MisakaCharacterStrings.json");
         }

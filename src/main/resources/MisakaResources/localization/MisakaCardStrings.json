@@ -1,0 +1,96 @@
+{
+  "misaka:Strike_Magnetic": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "misaka:Defend_Magnetic": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "misaka:Thunderjolt": {
+    "NAME": "Thunderjolt",
+    "DESCRIPTION": "Deal !D! damage. NL Charge-"
+  },
+  "misaka:Neodymium": {
+    "NAME": "Neodymium",
+    "DESCRIPTION": "Deploy a Neodymium Magnet.",
+    "UPGRADE_DESCRIPTION": "Deploy a Neodymium Magnet+."
+  },
+  "misaka:ISShield": {
+    "NAME": "I.S. Shield",
+    "DESCRIPTION": "Gain !B! Block. NL Add !M! I.S. Swords into your hand."
+  },
+  "misaka:Charge": {
+    "NAME": "Charge",
+    "DESCRIPTION": "Gain !B! Block. NL Charge !M! cards from your hand."
+  },
+  "misaka:Reserves": {
+    "NAME": "Reserves",
+    "DESCRIPTION": "Program !M! cards from your hand."
+  },
+  "misaka:Tap": {
+    "NAME": "Tap",
+    "DESCRIPTION": "Deal !D! damage. NL Add a Programmed card to your hand."
+  },
+  "misaka:Positivity": {
+    "NAME": "Positivity",
+    "DESCRIPTION": "Deal !D! damage. NL Charge+"
+  },
+  "misaka:LightningStorm": {
+    "NAME": "Lightning Storm",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Charge+"
+  },
+  "misaka:ChainLightning": {
+    "NAME": "Chain Lightning",
+    "DESCRIPTION": "Deal !D! damage. NL Bounce to opposite charge !M! times."
+  },
+  "misaka:StrikesTwice": {
+    "NAME": "Strikes Twice",
+    "DESCRIPTION": "Dual_Target NL Deal !D! damage."
+  },
+  "misaka:ISPuppet": {
+    "NAME": "I.S. Puppet",
+    "DESCRIPTION": "Deploy an I.S. Puppet. NL Add !M! I.S. Swords into your hand."
+  },
+  "misaka:Indexing": {
+    "NAME": "Indexing",
+    "DESCRIPTION": "Program !M! cards from your draw pile."
+  },
+  "misaka:Momentum": {
+    "NAME": "Momentum",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      "For every !M! cards played this turn, gain ",
+      "."
+    ]
+  },
+  "misaka:AlternatingCurrent": {
+    "NAME": "Alternating Current",
+    "DESCRIPTION": "Charge+ every other card in your hand. NL Charge- the rest."
+  },
+  "misaka:ProximityMine": {
+    "NAME": "Proximity Mine",
+    "DESCRIPTION": "Deploy a Proximity Mine.",
+    "UPGRADE_DESCRIPTION": "Deploy a Proximity Mine+."
+  },
+  "misaka:BehindEnemyLines": {
+    "NAME": "Behind Enemy Lines",
+    "DESCRIPTION": "Destroy ALL Deployed Trinkets. NL Deal !D! damage to adjacent enemies."
+  },
+  "misaka:Suspend": {
+    "NAME": "Suspend",
+    "DESCRIPTION": "Deal !D! damage. NL Enemies attracted to your target take !M! damage."
+  },
+  "misaka:Railgun": {
+    "NAME": "Railgun",
+    "DESCRIPTION": "???"
+  },
+  "misaka:Level6Shift": {
+    "NAME": "Level 6 Shift",
+    "DESCRIPTION": "Program your draw pile. NL Exhaust all cards on play."
+  },
+  "misaka:ISSword": {
+    "NAME": "I.S. Sword",
+    "DESCRIPTION": "Deal !D! damage. NL Attracted: Deal !D! damage. NL Repelled: Gain !B! Block."
+  }
+}
