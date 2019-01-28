@@ -32,7 +32,7 @@ public class ProgramPilePanel extends AbstractPanel {
     private static final TutorialStrings tutorialStrings = CardCrawlGame.languagePack.getTutorialString("ProgramTip");
     public static final String[] MSG = tutorialStrings.TEXT;
     public static final String[] LABEL = tutorialStrings.LABEL;
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("ProgramPilePanel");
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("misaka:ProgramPilePanel");
     public static final String[] TEXT = uiStrings.TEXT;
 
     private static final int RAW_W = 128;

@@ -20,7 +20,7 @@ import com.megacrit.cardcrawl.screens.mainMenu.ScrollBarListener;
 import java.util.ArrayList;
 
 public class ProgramPileViewScreen implements ScrollBarListener {
-    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("ProgramPileViewScreen");
+    private static final UIStrings uiStrings = CardCrawlGame.languagePack.getUIString("misaka:ProgramPileViewScreen");
     public static final String[] TEXT = uiStrings.TEXT;
     private static final int CARDS_PER_LINE = 5;
     private static final float SCROLL_BAR_THRESHOLD = 500.0F * Settings.scale;

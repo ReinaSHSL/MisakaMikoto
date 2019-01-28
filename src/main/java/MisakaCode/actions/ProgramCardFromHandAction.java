@@ -34,7 +34,7 @@ public class ProgramCardFromHandAction extends AbstractMisakaAction {
                 tickDuration();
             }
             if (p.hand.size() > amount) {
-                AbstractDungeon.handCardSelectScreen.open(TEXT[0], amount, false);
+                AbstractDungeon.handCardSelectScreen.open(TEXT[0] + amount + TEXT[1], amount, false);
                 tickDuration();
             }
         }

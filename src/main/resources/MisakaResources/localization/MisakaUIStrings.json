@@ -1,0 +1,21 @@
+{
+  "misaka:ProgramPilePanel": {
+    "TEXT": [
+      "I have no Programmed cards!"
+    ]
+  },
+  "misaka:ProgramPileViewScreen": {
+    "TEXT": [
+      "Programmed Cards",
+      "All the cards you can activate via Programming.",
+      "Return",
+      "Programmed Cards"
+    ]
+  },
+  "misaka:ProgramAction": {
+    "TEXT": [
+      "Choose ",
+      " cards to Program."
+    ]
+  }
+}
