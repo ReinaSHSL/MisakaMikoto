@@ -19,7 +19,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
         }
 )
 public class ChargePatch {
-    public static void Postfix(UseCardAction __instance, AbstractCard c, AbstractMonster m) {
+    public static void Postfix(UseCardAction __instance, AbstractCard c, AbstractCreature m) {
         if (m != null && c.hasTag(MisakaCardTags.isNegative)) {
             AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(m, AbstractDungeon.player, new NegativelyChargedPower(m)));
         }
