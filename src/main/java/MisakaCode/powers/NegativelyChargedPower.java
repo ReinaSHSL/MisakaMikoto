@@ -39,13 +39,15 @@ public class NegativelyChargedPower extends AbstractMisakaPower {
 
     @Override
     public float atDamageReceive(float d, DamageInfo.DamageType t) {
-        for (AbstractMonster m : aq()) {
-            if (m.hasPower(PositivelyChargedPower.POWER_ID)) {
-                act(na(m, nd((int)d, true)));
+        if (t == DamageInfo.DamageType.NORMAL) {
+            for (AbstractMonster m : aq()) {
+                if (m.hasPower(PositivelyChargedPower.POWER_ID)) {
+                    act(na(m, nd((int)d, true)));
+                }
             }
-        }
-        if (AbstractDungeon.player.hasPower(NegativelyChargedPower.POWER_ID)) {
-            act(nz((int)d));
+            if (AbstractDungeon.player.hasPower(NegativelyChargedPower.POWER_ID)) {
+                act(nz((int)d));
+            }
         }
         return d;
     }
