@@ -48,6 +48,7 @@ public class MisakaSpawnMonsterAction extends AbstractMisakaAction {
                     NeodymiumMagnet neodymiumMagnet = new NeodymiumMagnet(offsetX);
                     AbstractDungeon.getCurrRoom().monsters.addMonster(index, neodymiumMagnet);
                     act(new ApplyPowerAction(neodymiumMagnet, neodymiumMagnet, new PositivelyChargedPower(neodymiumMagnet)));
+                    neodymiumMagnet.showHealthBar();
                     break;
                 default:
                     AbstractMonster slimeyboi = new ApologySlime();
