@@ -34,40 +34,28 @@ public abstract class AbstractMisakaMonster extends AbstractMonster {
     ArrayList<AbstractMonster> aq() { return AbstractDungeon.getCurrRoom().monsters.monsters; }
 
     AbstractMonster re (AbstractMonster m) {
-        if (aq().indexOf(m) == 0) {
+        try {
+            return aq().get(aq().indexOf(m) - 1);
+        } catch (IndexOutOfBoundsException e) {
             return null;
         }
-        return aq().get(aq().indexOf(m) - 1);
     }
 
     AbstractMonster rt (AbstractMonster m) {
-        if (aq().indexOf(m) == aq().size() - 1) {
+        try {
+            return aq().get(aq().indexOf(m) + 1);
+        } catch (IndexOutOfBoundsException e) {
             return null;
         }
-        return aq().get(aq().indexOf(m) + 1);
     }
 
     DamageAction na (AbstractCreature m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
     DamageAction na (AbstractCreature m, DamageInfo i, AbstractGameAction.AttackEffect e) { return new DamageAction(m, i, e); }
 
-    AbstractMonster xz() {
-        if (aq().get(aq().indexOf(this) - 1) != null) {
-            return aq().get(aq().indexOf(this) - 1);
-        }
-        return null;
-    }
-
-    AbstractMonster xc() {
-        if (aq().get(aq().indexOf(this) + 1) != null) {
-            return aq().get(aq().indexOf(this) + 1);
-        }
-        return null;
-    }
-
     ArrayList<AbstractMonster> xx() {
         ArrayList<AbstractMonster> retVal = new ArrayList<>();
-        if (xz() != null) retVal.add(xz());
-        if (xc() != null) retVal.add(xc());
+        if (re(this) != null) retVal.add(re(this));
+        if (rt(this) != null) retVal.add(rt(this));
         return retVal;
     }
 }

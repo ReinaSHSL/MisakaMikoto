@@ -13,9 +13,7 @@ public class RepelAction extends AbstractMisakaAction {
     private AbstractMonster m2;
 
     public RepelAction(AbstractCreature leftM, AbstractMonster rightM) {
-        if (m1 instanceof AbstractMonster) {
-            m1 = (AbstractMonster)leftM;
-        }
+        m1 = (AbstractMonster) leftM;
         m2 = rightM;
         duration = Settings.ACTION_DUR_FASTER;
     }
@@ -51,7 +49,7 @@ public class RepelAction extends AbstractMisakaAction {
                     m1Neighbor = potentialNeighborLeft;
                 }
             } else if (m1.hasPower(PositivelyChargedPower.POWER_ID)) {
-                if (potentialNeighborLeft.hasPower(PositivelyChargedPower.POWER_ID)) {
+                if (potentialNeighborLeft != null && potentialNeighborLeft.hasPower(PositivelyChargedPower.POWER_ID)) {
                     if (potentialNeighborRight != null) {
                        m1Neighbor = potentialNeighborRight;
                     }
@@ -68,7 +66,7 @@ public class RepelAction extends AbstractMisakaAction {
                     m2Neighbor = potentialNeighborLeft;
                 }
             } else if (m2.hasPower(PositivelyChargedPower.POWER_ID)) {
-                if (potentialNeighborLeftTwo.hasPower(PositivelyChargedPower.POWER_ID)) {
+                if (potentialNeighborLeftTwo != null && potentialNeighborLeftTwo.hasPower(PositivelyChargedPower.POWER_ID)) {
                     if (potentialNeighborRightTwo != null) {
                         m1Neighbor = potentialNeighborRightTwo;
                     }
@@ -82,6 +80,7 @@ public class RepelAction extends AbstractMisakaAction {
                 temp = m1Neighbor.drawX;
                 m1Neighbor.drawX = m1.drawX;
                 m1.drawX = temp;
+                act(na(m1Neighbor, nd(1)));
             }
             if (m2Neighbor != null) {
                 Collections.swap(aq(), aq().indexOf(m2), aq().indexOf(m2Neighbor));
@@ -89,8 +88,9 @@ public class RepelAction extends AbstractMisakaAction {
                 temp = m2Neighbor.drawX;
                 m2Neighbor.drawX = m1.drawX;
                 m2.drawX = temp;
+                act(na(m2Neighbor, nd(1)));
             }
-            tickDuration();
+            isDone = true;
         }
     }
 }

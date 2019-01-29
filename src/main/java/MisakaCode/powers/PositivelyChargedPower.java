@@ -29,40 +29,8 @@ public class PositivelyChargedPower extends AbstractMisakaPower {
 
     @Override
     public void onInitialApplication() {
-        ArrayList<AbstractMonster> attractedMonsters = new ArrayList<>();
-        ArrayList<AbstractMonster> repelledMonsters = new ArrayList<>();
         if (owner.hasPower(NegativelyChargedPower.POWER_ID)) {
             act(new RemoveSpecificPowerAction(owner, owner, NegativelyChargedPower.POWER_ID));
-        }
-        if (owner instanceof AbstractMonster) {
-            AbstractMonster chargedMonster = (AbstractMonster)owner;
-            for (AbstractMonster m : aq()) {
-                int ownerIndex = aq().indexOf(chargedMonster);
-                int monsterIndex = aq().indexOf(m);
-                if (m.hasPower(NegativelyChargedPower.POWER_ID) && Math.abs(ownerIndex - monsterIndex) > 1) {
-                    attractedMonsters.add(m);
-                }
-                if (m.hasPower(PositivelyChargedPower.POWER_ID) && Math.abs(ownerIndex - monsterIndex) == 1) {
-                    if (
-                            (aq().get(monsterIndex - 1) != null && aq().get(monsterIndex - 1) != owner)
-                                    || (aq().get(monsterIndex + 1) != null && aq().get(monsterIndex + 1) != owner)
-                                    || (aq().get(ownerIndex - 1) != null && aq().get(ownerIndex - 1) != m)
-                                    || (aq().get(ownerIndex + 1) != null && aq().get(ownerIndex + 1) != m)
-                    ) {
-                        repelledMonsters.add(m);
-                    }
-                }
-            }
-        }
-        if (!repelledMonsters.isEmpty()) {
-            for (AbstractMonster m : repelledMonsters) {
-                act(new RepelAction(owner, m));
-            }
-        }
-        if (!attractedMonsters.isEmpty()) {
-            for (AbstractMonster m : attractedMonsters) {
-                act(new AttractAction(owner, m));
-            }
         }
     }
 
