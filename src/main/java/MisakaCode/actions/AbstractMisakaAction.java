@@ -21,9 +21,19 @@ public abstract class AbstractMisakaAction extends AbstractGameAction {
 
     RemoveSpecificPowerAction az(AbstractCreature c, String ID) { return new RemoveSpecificPowerAction(c, c, ID);}
 
-    AbstractMonster re (AbstractMonster m) { return aq().get(aq().indexOf(m) - 1); }
+    AbstractMonster re (AbstractMonster m) {
+        if (aq().indexOf(m) == 0) {
+            return null;
+        }
+        return aq().get(aq().indexOf(m) - 1);
+    }
 
-    AbstractMonster rt (AbstractMonster m) { return aq().get(aq().indexOf(m) + 1); }
+    AbstractMonster rt (AbstractMonster m) {
+        if (aq().indexOf(m) == aq().size() - 1) {
+            return null;
+        }
+        return aq().get(aq().indexOf(m) + 1);
+    }
 
     DamageAction na (AbstractMonster m, DamageInfo i) { return new DamageAction(m, i, AbstractGameAction.AttackEffect.SLASH_DIAGONAL); }
 
