@@ -48,5 +48,4 @@ public abstract class AbstractMisakaPower extends AbstractPower {
 
     NegativelyChargedPower we (AbstractMonster m) { return new NegativelyChargedPower(m); }
 
-
 }
